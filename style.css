@@ -1,7 +1,13 @@
-.U {
-    background-color: rgb(103, 173, 173);
-    text-decoration: none;
-    list-style: none;
-    width: 70px;
-    padding: 7px;
+.globalNav { 
+    display: flex; 
+    list-style: none; 
+    gap: 20px; 
 }
+
+.globalNav a { text-decoration: none; 
+    color: black; font-weight: bold; 
+}
+    
+.globalNav a.active { 
+    color: blue; 
+} /* Styling för aktiv länk */
