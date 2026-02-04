@@ -8,29 +8,28 @@ export const webPages = [
         path: "../assignment1/index.html"
     }
 ];
-console.log("lista med länkar");
 
-export function renderNav(pages) {
-    return pages.map(page => `<li><a href="${page.path}">${page.name}</a></li>`).join('');
+export function renderNav() {
+    const ul = document.querySelector('.globalNav');
+    if (!ul) return;
+   
+    const currentPath = location.pathname;
+    
+    ul.innerHTML = webPages.map(page => {
+        // Jämför om sökvägen slutar med samma fil
+        const link = new URL(page.path, location.href).pathname;
+        const isActive = link === currentPath;
+        return `<li><a href="${page.path}" class="${isActive ? 'active' : ''}">${page.name}</a></li>`;
+    }).join('');
 }
-console.log("Navigera sidor");
 
-export function initNav() {
-    const navEl = document.querySelector('.globalNav');
-    navEl.innerHTML = renderNav(webPages);
+document.addEventListener('DOMContentLoaded', () => {
+    renderNav();
+});
 
-    // Sätt active-klass på rätt navigationslänk
-    const navLinks = navEl.querySelectorAll('a');
-    const currentPage = window.location.pathname;
+    
 
-    navLinks.forEach(link => {
-        const href = link.getAttribute('href');
-        // Normalisera båda vägar för exakt matchning
-        const normalizedHref = href.replace('../', '/').replace('./', '/');
-        const normalizedPage = currentPage.replace(/\/$/, '') || '/';
-        
-        if (normalizedPage.endsWith(normalizedHref.replace(/\/$/, ''))) {
-            link.classList.add('active');
-        }
-    });
-}
+
+
+
+

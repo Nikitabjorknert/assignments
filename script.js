@@ -1,9 +1,3 @@
-import { initNav } from "../nav.js";
-
-document.addEventListener('DOMContentLoaded', () => {
-    initNav();
-});
-
 const assignments = [
     {
         id: '1a',
@@ -28,11 +22,11 @@ const assignments = [
 ];
 console.log("Lista");
 
-function createAssCard(ass) {
-    const card = document.createElement('div');
-    card.classList.add('ass-card');
+function createCard(ass) {
+    const div = document.createElement('div');
+    div.classList.add('card');
 
-    card.innerHTML = `
+    div.innerHTML = `
     <h3>Uppgift ${ass.id} - ${ass.title}</h3>
     <p>${ass.description}</p>
     <p>${ass.topics}</p>
@@ -43,23 +37,21 @@ function createAssCard(ass) {
     ${ass.showLink ? `<a href="./${ass.id}/" class="ass-link">Öppna uppgift</a> 
     ` : ''}
     `;
-    return card;
+    return div;
 }
+
+const card = createCard('Titel', 'Beskrivning');
+document.querySelector('main').append(card);
+
 console.log("skapa lista");
 
-function renderAss(assignments) {
+function renderCards(assignments) {
     const container = document.getElementById('container');
-    
-    if (!container) return; // Sluta här om container inte finns
 
     container.innerHTML = '';
-    for (const assignment of assignments) {
-        const card = createAssCard(assignment);
-        container.appendChild(card);
+    for (const ass of assignments) {
+        container.appendChild(createCard(ass));
     }
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-    renderAss(assignments);
-});
+    renderCards(assignments);
 
