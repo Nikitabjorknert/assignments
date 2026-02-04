@@ -1,4 +1,8 @@
-const ass = document.querySelector('.globalNav');
+import { initNav } from "../nav.js";
+
+document.addEventListener('DOMContentLoaded', () => {
+    initNav();
+});
 
 const assignments = [
     {
@@ -22,6 +26,7 @@ const assignments = [
         topics: ['git', 'versionshantering']
     }
 ];
+console.log("Lista");
 
 function createAssCard(ass) {
     const card = document.createElement('div');
@@ -40,8 +45,12 @@ function createAssCard(ass) {
     `;
     return card;
 }
+console.log("skapa lista");
+
 function renderAss(assignments) {
     const container = document.getElementById('container');
+    
+    if (!container) return; // Sluta här om container inte finns
 
     container.innerHTML = '';
     for (const assignment of assignments) {
@@ -49,4 +58,8 @@ function renderAss(assignments) {
         container.appendChild(card);
     }
 }
-renderAss(assignments);
+
+document.addEventListener('DOMContentLoaded', () => {
+    renderAss(assignments);
+});
+

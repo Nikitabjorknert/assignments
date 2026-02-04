@@ -10,4 +10,5 @@
     
 .globalNav a.active { 
     color: blue; 
+    text-decoration: none;
 } /* Styling för aktiv länk */
