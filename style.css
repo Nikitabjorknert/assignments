@@ -1,3 +1,7 @@
+#sidhuvud h4 {
+    background-color: rgb(224, 189, 189);
+    padding: 15px;
+}
 .globalNav { 
     display: flex; 
     list-style: none; 
@@ -5,10 +9,35 @@
 }
 
 .globalNav a { text-decoration: none; 
-    color: black; font-weight: bold; 
+    color: black;  
+    background-color: rgb(202, 165, 165);
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 18px;
+    box-shadow: 3px 2px 3px rgb(101, 60, 60);
 }
     
 .globalNav a.active { 
-    color: blue; 
+    color: rgb(42, 22, 11); 
     text-decoration: none;
+    border: 2px solid rgb(81, 60, 60);
+    font-weight: bold;
+    font-size: 20px;
 } /* Styling för aktiv länk */
+
+#container {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    margin: 20px;
+}
+.card {
+    background-color: rgb(232, 206, 206);
+    padding: 20px;
+    margin-top: 40px;
+    border-radius: 5px;
+}
+.ass-link {
+    text-decoration: none;
+    color: rgb(159, 5, 5);
+}
