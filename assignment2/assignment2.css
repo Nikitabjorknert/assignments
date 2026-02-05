@@ -1,6 +1,6 @@
 
-#container h1 {
-    color: rgb(159, 97, 120);
+#sidhuvud {
+    background-color: rgb(214, 161, 176);
 }
 #container {
     display: flex;
@@ -8,12 +8,22 @@
     gap: 0;
     margin: 10px;
     padding: 30px;
-    background-color: rgb(233, 217, 212);
+    background-color: rgb(233, 212, 219);
     width: 1200px;
     border: 2px solid rgb(96, 62, 76);
     box-shadow: 2px 4px 6px rgb(93, 35, 46);
-    border-radius: 30px;
 }
 #container a {
     color: rgb(161, 60, 79);
 }
+
+.globalNav a.active { 
+    color: rgb(42, 22, 11); 
+    text-decoration: none;
+    border: 2px solid rgb(134, 9, 71);
+    font-weight: bold;
+    font-size: 17px;
+    background-color: rgb(214, 117, 151);
+    box-shadow: 2px 1px 4px 3px rgb(83, 10, 41);
+    padding: 15px;
+} 

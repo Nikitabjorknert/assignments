@@ -2,6 +2,7 @@
 
 import { assignments } from "../../assignments.js";
 
+const rubrik = document.getElementById('rubrik');
 const container = document.getElementById('container');
 const assignment = assignments.find(assignments => assignments.id === 'Uppgift 1');
 const h3 = document.createElement('h3');
@@ -15,4 +16,5 @@ p.textContent = assignment.description;
 a.href = "../index.html";
 a.textContent = 'Tillbaka till start';
 
-container.append(h1, h3, p, a);
+container.append(p, a);
+rubrik.append(h1, h3);

@@ -3,6 +3,7 @@ body {
     padding: 0;
     width: 100%;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    width: 100%;
 }
 
 #sidhuvud {
@@ -42,7 +43,6 @@ body {
     flex-direction: row;
     gap: 50px;
     margin: 20px;
-    width: 100%;
 }
 .card {
     background-color: rgb(231, 225, 220);
