@@ -5,7 +5,7 @@ function createCard(ass) {
     div.classList.add('card');
 
     div.innerHTML = `
-    <h3>Uppgift ${ass.id} - ${ass.title}</h3>
+    <h3> ${ass.id} - ${ass.title}</h3>
     <p>${ass.description}</p>
     ${ass.link ? `<a href="./${ass.id}/" class="ass-link">Öppna uppgift</a> 
     ` : ''}
