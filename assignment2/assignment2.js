@@ -1,4 +1,5 @@
 import { assignments } from "../../assignments.js";
+import { renderNav } from "../nav.js";
 
 const rubrik = document.getElementById('rubrik');
 const container = document.getElementById('container');
@@ -16,3 +17,4 @@ a.textContent = 'Tillbaka till start';
 
 container.append(p, a);
 rubrik.append(h1, h3);
+renderNav(true);

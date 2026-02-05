@@ -13,17 +13,18 @@ export const webPages = [
     }
 ];
 
-export function renderNav() {
+export function renderNav(root) {
     const ul = document.querySelector('.globalNav');
     if (!ul) return;
    
     const currentPath = location.pathname;
-    
+    const dots = root ? "../" : "";
+
     ul.innerHTML = webPages.map(page => {
         // Jämför om sökvägen slutar med samma fil
         const link = new URL(page.path, location.href).pathname;
         const isActive = link === currentPath;
-        return `<li><a href="${page.path}" class="${isActive ? 'active' : ''}">${page.name}</a></li>`;
+        return `<li><a href="${dots}${page.path}" class="${isActive ? 'active' : ''}">${page.name}</a></li>`;
     }).join('');
 }
 

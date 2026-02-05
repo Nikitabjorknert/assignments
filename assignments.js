@@ -1,3 +1,5 @@
+import { renderNav } from "../nav.js";
+
 export const assignments = [
     {
         id: 'Uppgift 1',
@@ -13,3 +15,4 @@ export const assignments = [
     }
 ];
 console.log("Lista");
+renderNav(false);
