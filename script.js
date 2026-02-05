@@ -1,27 +1,13 @@
-export const assignments = [
-    {
-        id: '1',
-        title: 'Samlingssida för inlämningsuppgifter',
-        description: 'Lära sig',
-        showLink: true,
-    },
-    {
-        id: '2',
-        title: 'Hello2',
-        description: 'Lära sig att',
-        showLink: true,
-    }
-];
-console.log("Lista");
+import { assignments } from "../assignments.js";
 
-export default function createCard(ass) {
+function createCard(ass) {
     const div = document.createElement('div');
     div.classList.add('card');
 
     div.innerHTML = `
     <h3>Uppgift ${ass.id} - ${ass.title}</h3>
     <p>${ass.description}</p>
-    ${ass.showLink ? `<a href="./${ass.id}/" class="ass-link">Öppna uppgift</a> 
+    ${ass.link ? `<a href="./${ass.id}/" class="ass-link">Öppna uppgift</a> 
     ` : ''}
     `;
     return div;
