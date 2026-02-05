@@ -1,0 +1,19 @@
+
+#container h1 {
+    color: rgb(159, 97, 120);
+}
+#container {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 10px;
+    padding: 30px;
+    background-color: rgb(233, 217, 212);
+    width: 1200px;
+    border: 2px solid rgb(96, 62, 76);
+    box-shadow: 2px 4px 6px rgb(93, 35, 46);
+    border-radius: 30px;
+}
+#container a {
+    color: rgb(161, 60, 79);
+}

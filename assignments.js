@@ -2,14 +2,14 @@ export const assignments = [
     {
         id: 'Uppgift 1',
         title: 'Samlingssida för inlämningsuppgifter',
-        description: 'Lära sig',
-        link: "../assignments.js",
+        description: 'Kort beskrivning',
+        link: "../assignment1/index.html",
     },
     {
         id: 'Uppgift 2',
-        title: 'Hello2',
-        description: 'Lära sig att',
-        link: "../script.js",
+        title: 'Produktsida med kundvagn',
+        description: 'Kort beskrivning',
+        link: "../assignment2/index.html",
     }
 ];
 console.log("Lista");

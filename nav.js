@@ -1,11 +1,15 @@
 export const webPages = [
     {
-        name: "Landingpage",
+        name: "Startsida",
         path: "../index.html"
     },
     {
         name: "Uppgift 1",
         path: "../assignment1/index.html"
+    },
+    {
+        name: "Uppgift 2",
+        path: "../assignment2/index.html"
     }
 ];
 

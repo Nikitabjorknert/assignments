@@ -1,9 +1,7 @@
-
-
 import { assignments } from "../../assignments.js";
 
 const container = document.getElementById('container');
-const assignment = assignments.find(assignments => assignments.id === 'Uppgift 1');
+const assignment = assignments.find(assignments => assignments.id === 'Uppgift 2');
 const h3 = document.createElement('h3');
 const h1 = document.createElement('h1');
 const p = document.createElement('p');

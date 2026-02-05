@@ -7,7 +7,7 @@ function createCard(ass) {
     div.innerHTML = `
     <h3> ${ass.id} - ${ass.title}</h3>
     <p>${ass.description}</p>
-    ${ass.link ? `<a href="./${ass.id}/" class="ass-link">Öppna uppgift</a> 
+    ${ass.link ? `<a href="${ass.link}" class="ass-link">Öppna uppgift</a> 
     ` : ''}
     `;
     return div;

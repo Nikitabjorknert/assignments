@@ -2,11 +2,12 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 #sidhuvud {
-    background-color: rgb(224, 189, 189);
-    padding: 15px;
+    background-color: rgb(194, 186, 176);
+    padding: 25px;
 }
 .globalNav { 
     display: flex; 
@@ -14,39 +15,44 @@ body {
     gap: 20px; 
 }
 
-.globalNav a { text-decoration: none; 
+.globalNav a { 
+    text-decoration: none; 
     color: black;  
-    background-color: rgb(241, 231, 236);
-    padding: 15px;
+    background-color: rgb(248, 243, 241);
+    padding: 12px;
     border-radius: 10px;
-    font-size: 18px;
-    box-shadow: 3px 2px 3px rgb(101, 60, 60);
+    font-size: 15px;
+    box-shadow: 3px 2px 3px rgb(116, 114, 113);
 }
-    
+
+/* Styling för aktiv länk */
 .globalNav a.active { 
     color: rgb(42, 22, 11); 
     text-decoration: none;
-    border: 2px solid rgb(150, 122, 140);
+    border: 2px solid rgb(120, 111, 101);
     font-weight: bold;
-    font-size: 20px;
-} /* Styling för aktiv länk */
+    font-size: 17px;
+    background-color: rgb(225, 213, 203);
+    box-shadow: 2px 1px 4px 3px rgb(73, 54, 46);
+    padding: 15px;
+} 
 
 #container {
     display: flex;
     flex-direction: row;
     gap: 50px;
     margin: 20px;
+    width: 100%;
 }
 .card {
-    background-color: rgb(232, 206, 206);
+    background-color: rgb(231, 225, 220);
     padding: 20px;
-    margin-top: 40px;
+    margin: auto;
     border-radius: 5px;
+    width: 40%;
+    box-shadow: 2px 4px 7px rgb(93, 80, 65);
 }
 .ass-link {
-    text-decoration: none;
-    color: rgb(159, 5, 5);
+    color: rgb(112, 39, 39);
 }
-.ass-card {
-    list-style: none;
-}
+
