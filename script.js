@@ -28,5 +28,5 @@ export function renderCards(assignments) {
     }
 }
     renderCards(assignments);
-    renderNav(false);
+    renderNav(0);
 
