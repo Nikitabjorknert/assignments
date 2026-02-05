@@ -11,7 +11,7 @@ const assOne = [
 console.log("Lista");
 
 function assOneInfo(one) {
-    const info = document.createElement('nav');
+    const info = document.createElement('div');
     info.classList.add('ass1');
 
     info.innerHTML = `
@@ -23,8 +23,8 @@ function assOneInfo(one) {
     return info;
 }
 
-const ass1 = assOneInfo('title');
-document.querySelector('ul').append(ass1);
+//const ass1 = assOneInfo('title');
+//document.querySelector('div').append(ass1);
 
 console.log("skapa lista");
 
