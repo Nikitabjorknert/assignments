@@ -1,4 +1,4 @@
-import { assignments } from "../../assignments.js";
+import { assignments } from "../assignments.js";
 import { renderNav } from "../nav.js";
 
 const rubrik = document.getElementById('rubrik');

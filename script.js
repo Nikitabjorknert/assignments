@@ -1,5 +1,5 @@
-import { assignments } from "../assignments.js";
-import { renderNav } from "../nav.js";
+import { assignments } from "./assignments.js";
+import { renderNav } from "./nav.js";
 
 function createCard(ass) {
     const div = document.createElement('div');
@@ -28,5 +28,5 @@ export function renderCards(assignments) {
     }
 }
     renderCards(assignments);
-    renderNav(0);
+    renderNav(assignments);
 
