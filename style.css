@@ -46,11 +46,12 @@ body {
 }
 .card {
     background-color: rgb(231, 225, 220);
-    padding: 20px;
+    padding: 2em;
     margin: auto;
     border-radius: 5px;
     width: 40%;
     box-shadow: 2px 4px 7px rgb(93, 80, 65);
+    height: 60vh;
 }
 .ass-link {
     color: rgb(112, 39, 39);
