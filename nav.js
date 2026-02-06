@@ -7,9 +7,8 @@ export function renderNav(depth = 0) {
      if (!ul) return;
    
     let level = "";
-    if (depth > 0) {
-        level = "../".repeat(depth);
-    }
+    if (depth > 0) level = "../".repeat(depth);
+    
 
     const currentPath = location.pathname;
   
@@ -29,9 +28,7 @@ export function renderNav(depth = 0) {
         `;
     }).join('');
 }
-document.addEventListener('DOMContentLoaded', () => {
-    renderNav(assignments, 0);
-});
+
 
     
 

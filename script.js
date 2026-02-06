@@ -28,5 +28,9 @@ export function renderCards(assignments) {
     }
 }
     renderCards(assignments);
+
+    document.addEventListener("DOMContentLoaded", () => {
     renderNav(0);
+    });
+    
 
