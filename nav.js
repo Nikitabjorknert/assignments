@@ -1,21 +1,19 @@
 import { assignments } from "./assignments.js";
 
 
-export function renderNav(pages, depth = 0) {
-    console.log(assignments);
-    if (!Array.isArray(pages)) {
-        console.error("renderNav fick inte en array:", pages);
-        return;
-    }
-    console.log(Array.isArray(assignments));
-
+export function renderNav(depth = 0) {
      const ul = document.querySelector('.globalNav');
-    if (!ul) return;
+    
+     if (!ul) return;
    
-    const level = "../".repeat(depth);
+    let level = "";
+    if (depth > 0) {
+        level = "../".repeat(depth);
+    }
+
     const currentPath = location.pathname;
   
-         ul.innerHTML = pages.map(page => {
+         ul.innerHTML = assignments.map(page => {
         // Jämför om sökvägen slutar med samma fil
         const href = level + page.link;
         const linkPath = new URL(href, location.href).pathname;

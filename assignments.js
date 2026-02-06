@@ -15,4 +15,4 @@ export const assignments = [
     }
 ];
 console.log("Lista");
-renderNav(assignments, 0);
+renderNav(0);

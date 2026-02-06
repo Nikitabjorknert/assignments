@@ -17,4 +17,4 @@ a.textContent = 'Tillbaka till start';
 
 container.append(p);
 rubrik.append(h1, h3, a);
-renderNav(assignments, 1);
+renderNav(1);
