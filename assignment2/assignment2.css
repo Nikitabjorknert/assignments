@@ -13,8 +13,12 @@
     border: 2px solid rgb(96, 62, 76);
     box-shadow: 2px 4px 6px rgb(93, 35, 46);
 }
-#container a {
-    color: rgb(161, 60, 79);
+#container p {
+    line-height: 2em;
+}
+#rubrik a {
+    color: rgb(97, 22, 32);
+    text-decoration: none;
 }
 
 .globalNav a.active { 

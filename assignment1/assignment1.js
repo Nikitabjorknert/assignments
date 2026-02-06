@@ -1,6 +1,6 @@
 
 import { renderNav } from "../nav.js";
-import { assignments } from "../../assignments.js";
+import { assignments } from "../assignments.js";
 
 const rubrik = document.getElementById('rubrik');
 const container = document.getElementById('container');
@@ -16,6 +16,6 @@ p.textContent = assignment.description;
 a.href = "../index.html";
 a.textContent = 'Tillbaka till start';
 
-container.append(p, a);
-rubrik.append(h1, h3);
-renderNav(1);
+container.append(p);
+rubrik.append(h1, h3, a);
+renderNav(assignments, 1);

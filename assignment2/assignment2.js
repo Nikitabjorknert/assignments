@@ -15,6 +15,6 @@ p.textContent = assignment.description;
 a.href = "../index.html";
 a.textContent = 'Tillbaka till start';
 
-container.append(p, a);
-rubrik.append(h1, h3);
-renderNav(true);
+container.append(p);
+rubrik.append(h1, h3, a);
+renderNav(assignments, 1);

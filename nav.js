@@ -1,21 +1,30 @@
 import { assignments } from "./assignments.js";
 
 
-export function renderNav(assignments) {
-    
-    const ul = document.querySelector('.globalNav');
+export function renderNav(pages, depth = 0) {
+    console.log(assignments);
+    if (!Array.isArray(pages)) {
+        console.error("renderNav fick inte en array:", pages);
+        return;
+    }
+    console.log(Array.isArray(assignments));
+
+     const ul = document.querySelector('.globalNav');
     if (!ul) return;
    
+    const level = "../".repeat(depth);
     const currentPath = location.pathname;
   
-    ul.innerHTML = assignments.map(page => {
+         ul.innerHTML = pages.map(page => {
         // Jämför om sökvägen slutar med samma fil
-        const link = new URL(page.path, location.href).pathname;
-        const isActive = link === currentPath;
+        const href = level + page.link;
+        const linkPath = new URL(href, location.href).pathname;
+        const isActive = linkPath === currentPath;
+        ul.classList.add('active');
 
         return `
         <li>
-            <a href="${page.link}" class="${isActive ? 'active' : ''}">
+            <a href="${href}" class="${isActive ? 'active' : ''}">
             ${page.id}
             </a>
         </li>
@@ -23,7 +32,7 @@ export function renderNav(assignments) {
     }).join('');
 }
 document.addEventListener('DOMContentLoaded', () => {
-    renderNav(0);
+    renderNav(assignments, 0);
 });
 
     
