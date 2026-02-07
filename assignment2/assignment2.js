@@ -1,5 +1,7 @@
 import { assignments } from "../assignments.js";
 import { renderNav } from "../nav.js";
+import { products } from "./products.js";
+
 
 const rubrik = document.getElementById('rubrik');
 const container = document.getElementById('container');
@@ -15,6 +17,37 @@ p.textContent = assignment.description;
 a.href = "../index.html";
 a.textContent = 'Tillbaka till start';
 
+h3.textContent = products.name;
+
 container.append(p);
 rubrik.append(h1, h3, a);
 renderNav(1);
+
+
+function allProducts(product) {
+    const productList = document.getElementById('productList');
+    if (!productList) return;
+
+    const div = document.createElement('div');
+    div.classList.add('all');
+
+
+ div.innerHTML = `
+    <img src="${product.image}" alt="${product.name}">
+    <h3>${product.name}</h3>
+    <h5>Pis: ${product.price} kr</h5>
+    <p>${product.description}</p>
+    <p>${product.category.join(", ")}</p>
+    <br>
+    `;
+    return div;
+}
+
+const main = document.querySelector('main');
+for (const p of products) {
+    main.append(allProducts(p));
+}
+
+
+
+

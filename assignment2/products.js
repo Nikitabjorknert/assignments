@@ -1,10 +1,10 @@
-const products = [
+export const products = [
     {
         id: 1,
         name: 'Soffa',
         description: 'Denna soffa...',
         price: 14900,
-        image: 'länk',
+        image: 'img/soffa.jpg',
         category: ['Soffor', 'Sittmöbler', 'Vardagsrum']
     },
     {
@@ -12,25 +12,60 @@ const products = [
         name: 'Matbord',
         description: 'Denna är...',
         price: 2500,
-        image: 'länk',
-        category: ['Kitchen', 'Tables', 'Diningroom']
+        image: 'img/matbord.jpg',
+        category: ['Kök', 'Bord', 'Matsal']
     },
     {
-        möbel: 'Lampor'
+        id: 3,
+        name: 'Lampor',
+        description: 'Denna är...',
+        price: 800,
+        image: 'img/lampa.jpg',
+        category: ['Dekoration', 'Belysning', 'Bordslampa', 'Armaturer']
     },
     {
-        möbel: 'Fåtöljer'
+        id: 4,
+        name: 'Fåtöljer',
+        description: 'Denna är...',
+        price: 1800,
+        image: 'img/fåtölj.jpg',
+        category: ['Sittmöbler', 'Fåtöljer']
     },
     {
-        möbel: 'Garderober'
+        id: 5,
+        name: 'Garderober',
+        description: 'Denna är...',
+        price: 4800,
+        image: 'img/garderob.jpg',
+        category: ['Klädförvaring', 'Förvaring', 'Sovrum']
     },
     {
-        möbel: 'TV-bänkar'
+        id: 6,
+        name: 'TV-bänkar',
+        description: 'Denna är...',
+        price: 2000,
+        image: 'img/tvbänk.jpg',
+        category: ['Vardagsrum', 'Bänkar', 'TV-bänkar']
     },
     {
-        möbel: 'Matstolar'
+        id: 7,
+        name: 'Matstolar',
+        description: 'Denna är...',
+        price: 600,
+        image: 'img/matstol.jpg',
+        category: ['Matsal', 'Stolar', 'Kök']
     },
     {
-        möbel: 'Kontorsstolar'
+        id: 8,
+        name: 'Kontorsstolar',
+        description: 'Denna är...',
+        price: 1000,
+        image: 'img/kontorsstol.jpg',
+        category: ['Kontor', 'Stolar', 'Kontorsmöbler']
     }
 ];
+console.log('Produktlista: ', products);
+
+for (const id in products) {
+    console.log(id, products[id]);
+}
