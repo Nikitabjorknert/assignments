@@ -37,6 +37,9 @@ body {
     box-shadow: 2px 1px 4px 3px rgb(73, 54, 46);
     padding: 15px;
 } 
+.globalNav a:hover {
+    font-size: 19px;
+}
 
 #container {
     display: flex;

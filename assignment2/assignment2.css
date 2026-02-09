@@ -1,37 +1,92 @@
 
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
 #sidhuvud {
-    background-color: rgb(183, 203, 178);
+    background-color: rgb(162, 174, 158);
 }
-#container {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    margin: 10px;
-    padding: 30px;
-    background-color: rgb(216, 233, 212);
-    width: 1200px;
-    border: 2px solid rgb(105, 144, 101);
-    box-shadow: 2px 4px 6px rgb(55, 79, 56);
-}
-#container p {
-    line-height: 2em;
-}
+
 #rubrik a {
-    color: rgb(3, 88, 3);
+    color: rgb(240, 247, 240);
     text-decoration: none;
+}
+#rubrik a:hover {
+    font-size: 17px;
+    font-weight: bold;
+    text-shadow: 2px 2px 3px rgb(33, 33, 30);
 }
 
 .globalNav a.active { 
     color: rgb(1, 1, 0); 
     text-decoration: none;
-    border: 2px solid rgb(49, 81, 50);
+    border: 2px solid rgb(58, 71, 58);
     font-weight: bold;
     font-size: 17px;
-    background-color: rgb(148, 176, 139);
+    background-color: rgb(206, 216, 203);
     box-shadow: 2px 1px 4px 3px rgb(98, 119, 94);
     padding: 15px;
 } 
+.globalNav a:hover {
+    font-size: 19px;
+}
 
 .all img {
     border: 2px solid black;
+}
+.all {
+    margin: 30px 30px;
+    width: 600px;
+}
+
+footer {
+    background-color: rgb(138, 155, 137);
+    padding: 15px;
+    font-size: 14px;
+}
+
+#basket {
+    position: fixed;
+    right: 0;
+    width: 250px;
+    top: 0;
+    height: 100vh;
+    background-color: rgb(198, 204, 198);
+}
+.basket-item {
+    list-style: none;
+    margin-top: 2em;
+}
+
+.remove-btn {
+    background-color: rgb(209, 220, 209);
+    border-color: rgb(208, 218, 208);
+    border-radius: 5px;
+    margin-left: 6px;
+}
+.total {
+    position: fixed;
+    bottom: 0;
+    font-weight: bold;
+    border-top: 1px solid rgb(84, 91, 84);
+    padding: 5px;
+    width: 150px;
+    text-align: center;
+}
+.buy-btn {
+    background-color: rgb(221, 227, 222);
+    padding: 10px;
+    width: 130px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid rgb(115, 115, 115);
+    box-shadow: 1px 1px 3px rgb(66, 77, 67);
+}
+.buy-btn:hover {
+    background-color: rgb(169, 187, 168);
+}
+
+#basket h3 {
+    text-align: center;
+    padding: 4px;
+    border-bottom: 1.5px solid rgb(107, 117, 107);
 }
