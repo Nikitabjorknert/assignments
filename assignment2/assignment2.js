@@ -86,6 +86,7 @@ function allProducts(product) {
     `;
 
 
+
     const buyBtn = div.querySelector('.buy-btn');
     if (buyBtn) {
         buyBtn.addEventListener('click', () => {
@@ -96,6 +97,7 @@ function allProducts(product) {
 
     return div;
 }
+
 
 const productListEl = document.getElementById('productList') || document.querySelector('main');
 for (const p of products) {
