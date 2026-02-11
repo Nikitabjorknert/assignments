@@ -32,7 +32,7 @@ body {
 
 .all img {
     border: 2px solid black;
-    width: 300px;
+    width: 350px;
 }
 .all {
     margin: 30px 30px;
@@ -71,7 +71,7 @@ footer {
 }
 .total {
     position: fixed;
-    bottom: 0;
+    bottom: 30px;
     font-weight: bold;
     border-top: 1px solid rgb(84, 91, 84);
     padding: 5px;
@@ -95,4 +95,15 @@ footer {
     text-align: center;
     padding: 4px;
     border-bottom: 1.5px solid rgb(107, 117, 107);
+}
+
+.empty {
+    position: fixed;
+    bottom: 7px;
+    right: 50px;
+    padding: 3px;
+    width: 150px;
+    border: 1px solid rgb(30, 43, 30);
+    border-radius: 5px;
+    background-color: rgb(217, 225, 219); /*- Jag valde en färg som smälter in lite in bakgrunden då man inte vill locka kundernas blick till att tömma varukorgen -*/
 }

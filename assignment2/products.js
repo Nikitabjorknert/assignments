@@ -7,7 +7,7 @@ export const products = [
         price: 4900,
         image: 'img/soffa.jpg',
         category: ['Soffor', 'Sittmöbler', 'Vardagsrum', 'Svart'],
-        add: 'Köp'
+        count: 1
     },
     {
         id: 2,
@@ -17,7 +17,7 @@ export const products = [
         price: 2500,
         image: 'img/matbord.jpg',
         category: ['Runda Bord', 'Bord', 'Matbord', 'Matsal'],
-         add: 'Köp'
+        count: 1
     },
     {
         id: 3,
@@ -27,7 +27,7 @@ export const products = [
         price: 800,
         image: 'img/lampa.jpg',
         category: ['Dekoration', 'Belysning', 'Bordslampa', 'Armaturer'],
-         add: 'Köp'
+        count: 1
     },
     {
         id: 4,
@@ -37,7 +37,7 @@ export const products = [
         price: 1800,
         image: 'img/fåtölj.jpg',
         category: ['Sittmöbler', 'Fåtöljer', 'Vit', 'Vardagsrum'],
-         add: 'Köp'
+         count: 1
     },
     {
         id: 5,
@@ -47,7 +47,7 @@ export const products = [
         price: 4800,
         image: 'img/garderob.jpg',
         category: ['Klädförvaring', 'Förvaring', 'Sovrum', 'Garderober'],
-         add: 'Köp'
+        count: 1
     },
     {
         id: 6,
@@ -57,7 +57,7 @@ export const products = [
         price: 2000,
         image: 'img/tvbänk.jpg',
         category: ['Vardagsrum', 'Bänkar', 'TV-bänkar', 'Förvaring'],
-         add: 'Köp'
+        count: 1
     },
     {
         id: 7,
@@ -67,7 +67,7 @@ export const products = [
         price: 600,
         image: 'img/matstol.jpg',
         category: ['Matsal', 'Stolar', 'Kök', 'Svart'],
-         add: 'Köp'
+        count: 1
     },
     {
         id: 8,
@@ -77,7 +77,7 @@ export const products = [
         price: 1000,
         image: 'img/kontorsstol.jpg',
         category: ['Kontor', 'Stolar', 'Kontorsmöbler', 'Skrivbordsstolar'],
-         add: 'Köp'
+         count: 1
     }
 ];
 console.log('Produktlista: ', products);
