@@ -113,7 +113,7 @@ function renderBasket() {
         li.appendChild(span);
         li.appendChild(removeBtn);
         addedItems.appendChild(li);
-        addedItems.appendChild(removeBtn);
+        
 
         //Totala kostnaden, kopplat till produkterna. Vid tillagd produkt ökar även den totala summan
         sum += item.price * item.count;
@@ -123,8 +123,9 @@ function renderBasket() {
         emptyBasket.textContent = 'Töm varukorg';
         emptyBasket.classList.add('empty');
         emptyBasket.addEventListener('click', () => {
-             basket.splice(products);
+             basket.splice(0);
              renderBasket();
+             saveBasket();
         });
         addedItems.appendChild(emptyBasket);
     });
@@ -133,8 +134,6 @@ function renderBasket() {
     total.classList.add('total');
     total.textContent = `Totalt: ${sum} kr`;
     addedItems.appendChild(total);
-
-    saveBasket();
 }
 
 
@@ -143,19 +142,18 @@ const footer = document.querySelector('footer');
 p.textContent = 'Nikita Björknert - Webbteknik 3: Uppgift 2';
 footer.append(p);
 
+
 /*--- Local Storage ---*/
 
 function saveBasket() {
     localStorage.setItem('basket', JSON.stringify(basket));
 }
 function loadBasket() {
-    const saved = localStorage.getItem('basket');
-    if (saved) {
         basket.length = 0;
         localStorage.removeItem('basket');
         console.log('basket');
-    }
-    renderBasket();
+    
+        renderBasket();
 }
 loadBasket();
 
