@@ -7,8 +7,7 @@ body {
 }
 
 #rubrik a {
-    color: rgb(240, 247, 240);
-    text-decoration: none;
+    color: rgb(129, 43, 76);
 }
 #rubrik a:hover {
     font-size: 17px;
@@ -35,12 +34,20 @@ body {
     width: 350px;
 }
 .all {
-    margin: 30px 30px;
     width: 350px;
+    padding: 30px;
+    margin: 20px;
 }
+.all:hover {
+    background-color: rgb(236, 237, 235);
+    transition: 0.3s;
+    transform: scale(1.05);
+}
+
 #productList {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    width: 1000px;
 }
 
 

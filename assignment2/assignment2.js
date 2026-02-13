@@ -24,6 +24,58 @@ renderNav(1);
 
 
 /*------------ Uppgift 2 --------------*/
+//Alla produkter och dess stuktur på sidan
+function allProducts(product) {
+    const div = document.createElement('div');
+    div.classList.add('all');
+
+    div.innerHTML = `
+    <img src="${product.image}" alt="${product.name}">
+    <h2>${product.name}</h2>
+    <button class="buy-btn">Lägg i varukorg</button>
+    <h4>Pris: ${product.price} kr</h4>
+    <p>${product.description}</p>
+    <p><b>Material:</b> ${product.material}</p>
+    <p>${product.category[0]} | ${product.category[1]} | ${product.category[2]} | ${product.category[3]}</p>
+    <br>
+    `; //Jag ville att kategorierna skulle vara snyggt åtskilda och därför satte jag ett index på varje kategori i den enskild arrayen.
+
+    //Knappen för att lägga till varan i varukorgen
+    const buyBtn = div.querySelector('.buy-btn');
+    if (buyBtn) {
+        buyBtn.addEventListener('click', () => {
+            
+
+            // Kollar om produkten redan finns i korgen
+            const existingItem = basket.find(item => item.id === product.id);
+            
+            if (existingItem) {
+                // Om den finns ska count öka med 1 vid varje knapptryck
+                existingItem.count++;
+            } else {
+                // Om den inte finns läggs den till med count: 1
+                basket.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    image: product.image,
+                    count: 1
+                });
+            }
+            
+            renderBasket();
+            saveBasket();
+        });
+    }
+
+    return div;
+}
+
+//Går igenom hela produktlistan
+const productListEl = document.getElementById('productList') || document.querySelector('main');
+for (const p of products) {
+    productListEl.append(allProducts(p));
+}
 
 
 /*------- Kundkorg --------*/
@@ -55,6 +107,7 @@ function renderBasket() {
             basket.splice(index, 1);
             }
             renderBasket();
+            saveBasket();
         });
 
         li.appendChild(span);
@@ -80,57 +133,11 @@ function renderBasket() {
     total.classList.add('total');
     total.textContent = `Totalt: ${sum} kr`;
     addedItems.appendChild(total);
+
+    saveBasket();
 }
 
-//Alla produkter och dess stuktur på sidan
-function allProducts(product) {
-    const div = document.createElement('div');
-    div.classList.add('all');
 
-    div.innerHTML = `
-    <img src="${product.image}" alt="${product.name}">
-    <h2>${product.name}</h2>
-    <button class="buy-btn">Lägg i varukorg</button>
-    <h4>Pris: ${product.price} kr</h4>
-    <p>${product.description}</p>
-    <p><b>Material:</b> ${product.material}</p>
-    <p>${product.category[0]} | ${product.category[1]} | ${product.category[2]} | ${product.category[3]}</p>
-    <br>
-    `; //Jag ville att kategorierna skulle vara snyggt åtskilda och därför satte jag ett index på varje kategori i den enskild arrayen.
-
-    //Knappen för att lägga till varan i varukorgen
-    const buyBtn = div.querySelector('.buy-btn');
-    if (buyBtn) {
-        buyBtn.addEventListener('click', () => {
-            // Kollar om produkten redan finns i korgen
-            const existingItem = basket.find(item => item.id === product.id);
-            
-            if (existingItem) {
-                // Om den finns ska count öka med 1 vid varje knapptryck
-                existingItem.count++;
-            } else {
-                // Om den inte finns läggs den till med count: 1
-                basket.push({
-                    id: product.id,
-                    name: product.name,
-                    price: product.price,
-                    image: product.image,
-                    count: 1
-                });
-            }
-            
-            renderBasket();
-        });
-    }
-
-    return div;
-}
-
-//Går igenom hela produktlistan
-const productListEl = document.getElementById('productList') || document.querySelector('main');
-for (const p of products) {
-    productListEl.append(allProducts(p));
-}
 /*------- Footer --------*/
 const footer = document.querySelector('footer');
 p.textContent = 'Nikita Björknert - Webbteknik 3: Uppgift 2';
@@ -138,4 +145,17 @@ footer.append(p);
 
 /*--- Local Storage ---*/
 
-  
+function saveBasket() {
+    localStorage.setItem('basket', JSON.stringify(basket));
+}
+function loadBasket() {
+    const saved = localStorage.getItem('basket');
+    if (saved) {
+        basket.length = 0;
+        localStorage.removeItem('basket');
+        console.log('basket');
+    }
+    renderBasket();
+}
+loadBasket();
+

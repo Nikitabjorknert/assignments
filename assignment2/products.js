@@ -52,8 +52,8 @@ export const products = [
     {
         id: 6,
         name: 'TV-bänk Mindy',
-        description: 'Denna är...',
-        material: '95% Polyester, 5% Bomull',
+        description: 'Mindy kombinerar en modern design med praktisk funktion. Skåp och lådor är unika då de har olika material och hyllsystem. Den vitpigmenterade ekfärgen blandar en modern design med ett tidlöst intryck. TV-bänken ger plats för rymlig förvaring och möjligheter till att organisera dina prylar. Bänken tål max 35 kg.',
+        material: 'Vitpigmenterad ek.',
         price: 2000,
         image: 'img/tvbänk.jpg',
         category: ['Vardagsrum', 'Bänkar', 'TV-bänkar', 'Förvaring'],
@@ -71,9 +71,9 @@ export const products = [
     },
     {
         id: 8,
-        name: 'Kontorsstol Office',
-        description: 'Denna är...',
-        material: '95% Polyester, 5% Bomull',
+        name: 'Skrivbordsstol Office',
+        description: 'Office erbjuder en flexibel funktion i sin minimalistiska design. Skrivbordsstolen är utrustad med svängbart underrede på hjul vilket erbjuder justerbara funktioner anpassade till varje enskild invidvid. Tack vare dess justerbara funktioner främjas en ergonomisk komfort utifrån personlig preferens och arbetsplats.',
+        material: 'Målad ekefärg, belagd stål.',
         price: 1000,
         image: 'img/kontorsstol.jpg',
         category: ['Kontor', 'Stolar', 'Kontorsmöbler', 'Skrivbordsstolar'],
