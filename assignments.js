@@ -10,7 +10,7 @@ export const assignments = [
     {
         id: 'Uppgift 2',
         title: 'Produktsida med kundvagn',
-        description: 'Kort beskrivning',
+        description: 'I Uppgift 2 skulle vi utföra en produktsida/shop med information om produkterna, funktion att kunna lägga till produkterna i varukorgen, samt att varukorgens innehåll summerar ett totalpris samt antal av varje produkt.',
         link: "assignment2/index.html",
     }
 ];

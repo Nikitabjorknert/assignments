@@ -135,4 +135,7 @@ for (const p of products) {
 const footer = document.querySelector('footer');
 p.textContent = 'Nikita Björknert - Webbteknik 3: Uppgift 2';
 footer.append(p);
+
+/*--- Local Storage ---*/
+
   
