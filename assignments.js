@@ -12,6 +12,12 @@ export const assignments = [
         title: 'Produktsida med kundvagn',
         description: 'I Uppgift 2 skulle vi utföra en produktsida/shop med information om produkterna, funktion att kunna lägga till produkterna i varukorgen, samt att varukorgens innehåll summerar ett totalpris samt antal av varje produkt.',
         link: "assignment2/index.html",
+    },
+      {
+        id: 'Uppgift 3',
+        title: 'Turneringsgeneratorn',
+        description: 'Inuppgift 3 ska du bygga en applikation för att visualisera slutspel i en turnering.',
+        link: "assignment3/index.html",
     }
 ];
 console.log("Lista");
