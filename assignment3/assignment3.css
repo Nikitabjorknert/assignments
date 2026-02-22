@@ -1,0 +1,33 @@
+#sidhuvud {
+    background-color: rgb(207, 164, 180);
+}
+
+#rubrik a {
+    color: rgb(8, 31, 148);
+}
+#rubrik a:hover {
+    font-size: 17px;
+    font-weight: bold;
+    text-shadow: 2px 2px 3px rgb(249, 218, 229);
+}
+
+.globalNav a.active { 
+    color: rgb(1, 1, 0); 
+    text-decoration: none;
+    border: 2px solid rgb(62, 7, 24);
+    font-weight: bold;
+    font-size: 17px;
+    background-color: rgb(233, 197, 214);
+    box-shadow: 2px 1px 4px 3px rgb(113, 33, 57);
+    padding: 15px;
+} 
+.globalNav a:hover {
+    font-size: 19px;
+}
+
+.play-btn {
+    background-color: rgb(166, 207, 164);
+    padding: 10px;
+    border-radius: 13px;
+    font-size: 17px;
+}
