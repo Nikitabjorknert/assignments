@@ -1,11 +1,6 @@
-fetch("contestants.json")
-    .then(response => response.json())
-    .then(contestants => {
-        console.log(contestants);
-        console.log(contestants[0].id);
-    });
 
-import { match1 } from "./match.js";
+import { Match } from "./match.js"
+
 import { assignments } from "../assignments.js";
 import { renderNav } from "../nav.js";
 
@@ -22,3 +17,69 @@ a.textContent = 'Tillbaka till start';
 
 rubrik.append(h1, h3, a);
 renderNav(1);
+
+
+//Uppgift 3
+
+async function fetchData() {
+    const response = await fetch('contestants.json');
+    const players = await response.json();
+
+    const container = document.getElementById('container');
+    container.innerHTML = ''; // Rensa tidigare innehåll
+
+const matches = [];
+
+
+    for (let i = 0; i < players.length; i += 2) {
+        //const player1 = players[i];
+        //const player2 = players[i + 1];
+       
+     const match = new Match(players[i], players[i + 1]);
+        
+     matches.push(match);
+     container.appendChild(match.renderMatch());
+    }
+
+    console.log(matches);
+}
+fetchData();
+
+
+/*
+function renderMatches(players) {
+    const container = document.querySelector('main');
+
+    const matches = [];
+
+    for (let i = 0; i < players.length; i += 2) {
+        //const player1 = players[i];
+        //const player2 = players[i + 1];
+       
+     //const match = new Match(player1, player2);
+        
+     matches.push(new Match(players[i], players[i + 1]));
+    }
+
+    return matches;
+}
+ container.appendChild(renderMatches(players));
+
+async function init() {
+    const response = await fetch('contestants.json');
+    const players = await response.json(); 
+
+    const container = document.getElementById('container');
+    container.innerHTML = ''; // Rensa tidigare innehåll
+
+    const matches = renderMatches(players);
+
+    matches.forEach(match => {
+        container.appendChild(match.renderMatch());
+    });
+}
+init(); */
+
+
+ 
+
