@@ -25,9 +25,34 @@
     font-size: 19px;
 }
 
+
 .play-btn {
     background-color: rgb(166, 207, 164);
     padding: 10px;
     border-radius: 13px;
     font-size: 17px;
+}
+#match1 {
+    margin: 20px;
+    width: 33%;
+}
+div.match {
+    gap: 10px;
+    border: 1px solid rgb(121, 121, 121);
+    border-radius: 12px;
+    padding: 10px;
+    margin: 10px;
+    background-color: rgb(251, 243, 232);
+}
+div h5 {
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(173, 10, 10);
+}
+
+.winner {
+    background-color: rgb(195, 225, 205);
+    border: 1px solid green;
+    border-radius: 5px;
+    padding-left: 10px;
 }

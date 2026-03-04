@@ -25,25 +25,35 @@ async function fetchData() {
     const response = await fetch('contestants.json');
     const players = await response.json();
 
-    const container = document.getElementById('container');
-    container.innerHTML = ''; // Rensa tidigare innehåll
+    const match1 = document.getElementById('match1');
+    match1.innerHTML = ''; // Rensa tidigare innehåll
 
-const matches = [];
+    const matches = [];
 
+    const btn1 = document.createElement('button');
+    btn1.classList.add('play-btn');
+    btn1.textContent = 'Spela kvartsfinal';
+
+    btn1.addEventListener('click', () => {
+        matches.forEach(match => match.play());
+        console.log(btn1, "Knappen fungerar");
+    });
+   
+    match1.appendChild(btn1);
 
     for (let i = 0; i < players.length; i += 2) {
-        //const player1 = players[i];
-        //const player2 = players[i + 1];
-       
-     const match = new Match(players[i], players[i + 1]);
-        
-     matches.push(match);
-     container.appendChild(match.renderMatch());
+
+        const match = new Match(players[i], players[i + 1]);
+
+        matches.push(match);
+        match1.appendChild(match.renderMatch());
     }
 
     console.log(matches);
+    
 }
 fetchData();
+
 
 
 /*
@@ -81,5 +91,5 @@ async function init() {
 init(); */
 
 
- 
+
 

@@ -1,18 +1,9 @@
-//Är ett tillstånd som ska förändras: 
-// Den har två deltagare, 
-// den kan spelas 
-// och har en vinnare
-//Dessa förändringar passar bra för en klass
 
-
-/*-Matchklassen - Konstruktor, privata fält, getters, en metod -*/
-
-//Toggle-knapp? på den klass med vinnare
 
 export class Match {
-#player1;
-#player2;
-#winner;
+    #player1;
+    #player2;
+    #winner;
 
     constructor(player1, player2) {
         this.#player1 = player1;
@@ -21,84 +12,73 @@ export class Match {
         this.#winner = null;
         this.played = false;
         this.matchDiv = null;
-    } 
+    }
 
-get players() {
-    return [this.#player1, this.#player2];
-}
+    get players() {
+        return [this.#player1, this.#player2];
+    }
 
-get winner() {
-    return this.#winner;
-}
+    get winner() {
+        return this.#winner;
+    }
 
-get isPlayed() {
-    return this.played;
-}
+    get isPlayed() {
+        return this.played;
+    }
 
-play() { //Simulerar matchen och bestämmer vinnaren
-    if (this.played) return; //Förhindrar att matchen spelas flera gånger
-    this.#winner = Math.random() < 0.5 ? this.#player1 : this.#player2;
-    this.played = true;
-    this.renderDom();
-}
+    play() { //Simulerar matchen och bestämmer vinnaren
+        if (this.played) return; //Förhindrar att matchen spelas flera gånger
+        const skillA = this.players[0].skillLevel;
+        const skillB = this.players[1].skillLevel;
+        const chanceA = skillA / (skillA + skillB);
 
-renderMatch() { //returnerar elementet som representerar matchen i DOM:en
-    const div = document.createElement('div');
-    div.classList.add('match');
+        this.#winner = Math.random() < chanceA ? skillA : skillB;
 
-    const button = document.createElement('button');
-    button.classList.add('play-btn');
-    button.textContent = 'Spela kvartsfinal';
+        this.played = true;
+        this.renderDom();
 
-    button.addEventListener('click', () => this.play()); 
-   
-        div.appendChild(button);
+        if (this.#winner === skillA) {
+            this.div.querySelector('.player1').classList.add('winner');
+        } else {
+            this.div.querySelector('.player2').classList.add('winner');
+        }
+        console.log("Vinnare:", this.#winner);
+        return this.#winner;
+       
+        
+        //Den med högst skillLevel har störst chans att vinna
+    }
+
+    renderMatch() { //returnerar elementet som representerar matchen i DOM:en
+        const div = document.createElement('div');
+        div.classList.add('match');
 
         div.innerHTML = `
-            <div>
+            <div class='containerDiv'>
+            <div class='player1'>
             <h3>${this.#player1.name}</h3>
-            <p>${this.#player1.catchphrase ?? ""}</p>
-           
+            <p>Skillevel: ${this.#player1.skillLevel}</p>
+            ${this.#player1.catchphrase && this.#player1.catchphrase !== "..." ? `<p>${this.#player1.catchphrase}</p>`: ""}
+           </div>
+
             <h5>VS</h5>
            
+            <div class='player2'>
             <h3>${this.#player2.name}</h3>
-            <p>${this.#player2.catchphrase ?? ""}</p>
+            <P>Skillevel: ${this.#player2.skillLevel}</P>
+            ${this.#player2.catchphrase && this.#player2.catchphrase !== "..." ? `<p>${this.#player2.catchphrase}</p>`: ""} 
             </div>
-        `;
+            </div>
+        `; //Om spelarens catchphrase är null eller "..." ska elementet tas bort/tömmas och därav inte visas
 
-        this.matchDiv = div;
+        this.div = div;
         this.renderDom();
         return div;
-    };
+    }
 
     renderDom() { //Uppdaterar matchens utseende baserat på dess tillstånd
         if (!this.matchDiv) return;
-        
-        const status = document.createElement('p');
-        status.classList.add('status');
-        this.matchDiv.appendChild(status);
 
-        const statusElement = this.matchDiv.querySelector('.status');
-        statusElement.classList.add('status');
-
-        const button = this.matchDiv.querySelector('.play-btn');
-
-        if (!this.played) {
-            statusElement.textContent = 'Inte spelad';
-            //button.disabled = false;
-        } else {
-            statusElement.textContent = `Vinnare: ${this.#winner.name}`;
-            button.disabled = true;
-        }
     }
-    
 }
 
- /*- const btn = document.createElement('button');
-    btn.classList.add('play-btn');
-    btn.textContent = 'Simulera kvartsfinal';
-    btn.addEventListener('click', () => {
-        this.played = true;
-        this.renderPlayers();
-    });
--*/
