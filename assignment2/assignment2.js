@@ -15,17 +15,21 @@ h1.textContent = assignment.title;
 a.href = "../index.html";
 a.textContent = 'Tillbaka till start';
 
-h3.textContent = products.name;
-
 rubrik.append(h1, h3, a);
 renderNav(1);
 
 
-
-
 /*------------ Uppgift 2 --------------*/
+
+/*--- Local Storage ---*/
+let basket = JSON.parse(localStorage.getItem('basket')) || []; //När sidan laddar hämtas varorna som finns sedan tidigare eller returnerar en tom array om det inte finns varor i varukorgen
+
+function saveBasket() {
+    localStorage.setItem('basket', JSON.stringify(basket));
+} //Sparar tillagda varor i varukorgen så att de finns kvar efter laddad sida. Registrerar och sparar varukorgen även när varukorgen ändras (adderar en vara, raderar vara eller tömmer varukorgen)
+
 //Alla produkter och dess stuktur på sidan
-function allProducts(product) {
+function productDiv(product) {
     const div = document.createElement('div');
     div.classList.add('all');
 
@@ -36,19 +40,18 @@ function allProducts(product) {
     <h4>Pris: ${product.price} kr</h4>
     <p>${product.description}</p>
     <p><b>Material:</b> ${product.material}</p>
-    <p>${product.category[0]} | ${product.category[1]} | ${product.category[2]} | ${product.category[3]}</p>
+    <p><b>Kategori:</b> <li class="listStyle">${product.category}</li></p>
     <br>
-    `; //Jag ville att kategorierna skulle vara snyggt åtskilda och därför satte jag ett index på varje kategori i den enskild arrayen.
+    `;
 
     //Knappen för att lägga till varan i varukorgen
     const buyBtn = div.querySelector('.buy-btn');
     if (buyBtn) {
         buyBtn.addEventListener('click', () => {
-            
 
             // Kollar om produkten redan finns i korgen
             const existingItem = basket.find(item => item.id === product.id);
-            
+
             if (existingItem) {
                 // Om den finns ska count öka med 1 vid varje knapptryck
                 existingItem.count++;
@@ -62,9 +65,8 @@ function allProducts(product) {
                     count: 1
                 });
             }
-            
-            renderBasket();
             saveBasket();
+            renderBasket();
         });
     }
 
@@ -74,12 +76,11 @@ function allProducts(product) {
 //Går igenom hela produktlistan
 const productListEl = document.getElementById('productList') || document.querySelector('main');
 for (const p of products) {
-    productListEl.append(allProducts(p));
+    productListEl.append(productDiv(p));
 }
 
 
 /*------- Kundkorg --------*/
- const basket = [];
 
 function renderBasket() {
     const addedItems = document.getElementById('addedItems');
@@ -87,24 +88,24 @@ function renderBasket() {
 
     addedItems.innerHTML = "";
     let sum = 0;
-   
+
     basket.forEach((item, index) => {
         const li = document.createElement('li');
         li.classList.add('basket-item');
 
         const span = document.createElement('span');
         span.textContent = `${item.count}: ${item.name} - ${item.price} kr`;
-    
+
         /*------- Minska antalet av enskild produkt --------*/
         const removeBtn = document.createElement('button');
         removeBtn.textContent = 'Ångra';
         removeBtn.classList.add('remove-btn');
         removeBtn.addEventListener('click', () => {
-            
+
             if (item.count > 1) { //Om antalet är större än 1, ska antalet minska
                 item.count -= 1;
             } else { //Om antalet är 1, ska hela produkten tas bort ur varukorgen
-            basket.splice(index, 1);
+                basket.splice(index, 1);
             }
             renderBasket();
             saveBasket();
@@ -113,19 +114,19 @@ function renderBasket() {
         li.appendChild(span);
         li.appendChild(removeBtn);
         addedItems.appendChild(li);
-        
+
 
         //Totala kostnaden, kopplat till produkterna. Vid tillagd produkt ökar även den totala summan
         sum += item.price * item.count;
 
         //Tömma hela varukorgen
-         const emptyBasket = document.createElement('button');
+        const emptyBasket = document.createElement('button');
         emptyBasket.textContent = 'Töm varukorg';
         emptyBasket.classList.add('empty');
         emptyBasket.addEventListener('click', () => {
-             basket.splice(0);
-             renderBasket();
-             saveBasket();
+            basket.splice(0);
+            renderBasket();
+            saveBasket();
         });
         addedItems.appendChild(emptyBasket);
     });
@@ -142,18 +143,7 @@ const footer = document.querySelector('footer');
 p.textContent = 'Nikita Björknert - Webbteknik 3: Uppgift 2';
 footer.append(p);
 
+renderBasket();
 
-/*--- Local Storage ---*/
 
-function saveBasket() {
-    localStorage.setItem('basket', JSON.stringify(basket));
-}
-function loadBasket() {
-        basket.length = 0;
-        localStorage.removeItem('basket');
-        console.log('basket');
-    
-        renderBasket();
-}
-loadBasket();
 

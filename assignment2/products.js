@@ -6,7 +6,7 @@ export const products = [
         material: '95% Polyester, 5% Bomull',
         price: 4900,
         image: 'img/soffa.jpg',
-        category: ['Soffor', 'Sittmöbler', 'Vardagsrum', 'Svart'],
+        category: ['Soffor', ' Sittmöbler', ' Vardagsrum', ' Svart'],
         count: 1
     },
     {
@@ -16,7 +16,7 @@ export const products = [
         material: 'MDF',
         price: 2500,
         image: 'img/matbord.jpg',
-        category: ['Runda Bord', 'Bord', 'Matbord', 'Matsal'],
+        category: ['Runda Bord', ' Bord', ' Matbord', ' Matsal'],
         count: 1
     },
     {
@@ -26,7 +26,7 @@ export const products = [
         material: 'Metall',
         price: 800,
         image: 'img/lampa.jpg',
-        category: ['Dekoration', 'Belysning', 'Bordslampa', 'Armaturer'],
+        category: ['Dekoration', ' Belysning', ' Bordslampa', ' Armaturer'],
         count: 1
     },
     {
@@ -36,7 +36,7 @@ export const products = [
         material: '85% Polyester, 15% Akryl',
         price: 1800,
         image: 'img/fåtölj.jpg',
-        category: ['Sittmöbler', 'Fåtöljer', 'Vit', 'Vardagsrum'],
+        category: ['Sittmöbler', ' Fåtöljer', ' Vit', ' Vardagsrum'],
          count: 1
     },
     {
@@ -46,7 +46,7 @@ export const products = [
         material: 'Slipad furu, pressat hdf-material.',
         price: 4800,
         image: 'img/garderob.jpg',
-        category: ['Klädförvaring', 'Förvaring', 'Sovrum', 'Garderober'],
+        category: ['Klädförvaring', ' Förvaring', ' Sovrum', ' Garderober'],
         count: 1
     },
     {
@@ -56,7 +56,7 @@ export const products = [
         material: 'Vitpigmenterad ek.',
         price: 2000,
         image: 'img/tvbänk.jpg',
-        category: ['Vardagsrum', 'Bänkar', 'TV-bänkar', 'Förvaring'],
+        category: ['Vardagsrum', ' Bänkar', ' TV-bänkar', ' Förvaring'],
         count: 1
     },
     {
@@ -66,7 +66,7 @@ export const products = [
         material: 'Massiv ek',
         price: 600,
         image: 'img/matstol.jpg',
-        category: ['Matsal', 'Stolar', 'Kök', 'Svart'],
+        category: ['Matsal', ' Stolar', ' Kök', ' Svart'],
         count: 1
     },
     {
@@ -76,7 +76,7 @@ export const products = [
         material: 'Målad ekefärg, belagd stål.',
         price: 1000,
         image: 'img/kontorsstol.jpg',
-        category: ['Kontor', 'Stolar', 'Kontorsmöbler', 'Skrivbordsstolar'],
+        category: ['Kontor', ' Stolar', ' Kontorsmöbler', ' Skrivbordsstolar'],
          count: 1
     }
 ];

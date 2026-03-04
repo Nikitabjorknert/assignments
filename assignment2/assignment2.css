@@ -114,3 +114,7 @@ footer {
     border-radius: 5px;
     background-color: rgb(217, 225, 219); /*- Jag valde en färg som smälter in lite in bakgrunden då man inte vill locka kundernas blick till att tömma varukorgen -*/
 }
+
+.listStyle {
+    list-style: none;
+}

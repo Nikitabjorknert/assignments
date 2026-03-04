@@ -1,5 +1,5 @@
 #sidhuvud {
-    background-color: rgb(207, 164, 180);
+    background-color: rgb(227, 219, 175);
 }
 
 #rubrik a {
@@ -8,17 +8,17 @@
 #rubrik a:hover {
     font-size: 17px;
     font-weight: bold;
-    text-shadow: 2px 2px 3px rgb(249, 218, 229);
+    text-shadow: 2px 2px 3px rgb(105, 104, 105);
 }
 
 .globalNav a.active { 
     color: rgb(1, 1, 0); 
     text-decoration: none;
-    border: 2px solid rgb(62, 7, 24);
+    border: 2px solid rgb(86, 81, 81);
     font-weight: bold;
     font-size: 17px;
-    background-color: rgb(233, 197, 214);
-    box-shadow: 2px 1px 4px 3px rgb(113, 33, 57);
+    background-color: rgb(229, 196, 165);
+    box-shadow: 2px 1px 3px 2px rgb(190, 130, 80);
     padding: 15px;
 } 
 .globalNav a:hover {
@@ -51,7 +51,7 @@ div h5 {
 }
 
 .winner {
-    background-color: rgb(195, 225, 205);
+    background-color: rgb(198, 229, 201);
     border: 1px solid green;
     border-radius: 5px;
     padding-left: 10px;
