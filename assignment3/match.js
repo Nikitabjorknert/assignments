@@ -43,9 +43,15 @@ export class Match {
             this.div.querySelector('.player2').classList.add('winner');
         }
         console.log("Vinnare:", this.#winner);
+
+        if (this.#winner !== skillA) {
+            this.div.querySelector('.player1').
+            classList.add('loser');
+        } else {
+            this.div.querySelector('.player2').classList.add('loser');
+        }
+
         return this.#winner;
-       
-        
         //Den med högst skillLevel har störst chans att vinna
     }
 
@@ -53,12 +59,13 @@ export class Match {
         const div = document.createElement('div');
         div.classList.add('match');
 
+//KOLLA VAD SOM MENAS MED STANDARDVÄRDE I RENDERING AV SAKNADE VÄRDEN
         div.innerHTML = `
             <div class='containerDiv'>
             <div class='player1'>
             <h3>${this.#player1.name}</h3>
             <p>Skillevel: ${this.#player1.skillLevel}</p>
-            ${this.#player1.catchphrase && this.#player1.catchphrase !== "..." ? `<p>${this.#player1.catchphrase}</p>`: ""}
+             <p>${this.#player1.catchphrase === "..." ? "" : this.#player1.catchphrase ?? ""}</p>
            </div>
 
             <h5>VS</h5>
@@ -66,10 +73,10 @@ export class Match {
             <div class='player2'>
             <h3>${this.#player2.name}</h3>
             <P>Skillevel: ${this.#player2.skillLevel}</P>
-            ${this.#player2.catchphrase && this.#player2.catchphrase !== "..." ? `<p>${this.#player2.catchphrase}</p>`: ""} 
+             <p>${this.#player2.catchphrase === "..." ? "" : this.#player2.catchphrase ?? ""}</p>
             </div>
             </div>
-        `; //Om spelarens catchphrase är null eller "..." ska elementet tas bort/tömmas och därav inte visas
+        `; //Om spelarens catchphrase är "..." returneras "", annars returneras spelarens catchphrase. Om catchphrase är null eller undefines returneras en tom stäng
 
         this.div = div;
         this.renderDom();
@@ -78,7 +85,13 @@ export class Match {
 
     renderDom() { //Uppdaterar matchens utseende baserat på dess tillstånd
         if (!this.matchDiv) return;
+    }
 
+    renderSemi() {
+        let semiPlayers = [];
+        semiPlayers = this.#winner;
+
+        const semi = semiPlayers.map(s => s.this.#winner);
     }
 }
 
