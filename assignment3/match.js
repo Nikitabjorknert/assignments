@@ -26,40 +26,39 @@ export class Match {
         return this.played;
     }
 
-    play() { //Simulerar matchen och bestämmer vinnaren
-        if (this.played) return; //Förhindrar att matchen spelas flera gånger
-        const skillA = this.players[0].skillLevel;
-        const skillB = this.players[1].skillLevel;
-        const chanceA = skillA / (skillA + skillB);
+    createRound() { //Simulerar matchen och bestämmer vinnaren
+        if (this.played) { 
+            return this.#winner; 
+        }
+        
+        const skillA = this.players[0];
+        const skillB = this.players[1];
+        const chanceA = skillA.skillLevel / (skillA.skillLevel + skillB.skillLevel);
 
         this.#winner = Math.random() < chanceA ? skillA : skillB;
-
         this.played = true;
-        this.renderDom();
 
-        if (this.#winner === skillA) {
-            this.div.querySelector('.player1').classList.add('winner');
+        if (this.matchDiv) {
+
+            const playerA = this.matchDiv.querySelector('.player1');
+            const playerB =this.matchDiv.querySelector('.player2');
+
+            if (this.#winner === skillA) {
+            playerA.classList.add('winner');
+            playerB.classList.add('loser');
         } else {
-            this.div.querySelector('.player2').classList.add('winner');
+            playerB.classList.add('winner');
+            playerA.classList.add('loser');
         }
         console.log("Vinnare:", this.#winner);
-
-        if (this.#winner !== skillA) {
-            this.div.querySelector('.player1').
-            classList.add('loser');
-        } else {
-            this.div.querySelector('.player2').classList.add('loser');
-        }
-
-        return this.#winner;
-        //Den med högst skillLevel har störst chans att vinna
     }
+           return this.#winner;        
+ }
 
     renderMatch() { //returnerar elementet som representerar matchen i DOM:en
         const div = document.createElement('div');
         div.classList.add('match');
 
-//KOLLA VAD SOM MENAS MED STANDARDVÄRDE I RENDERING AV SAKNADE VÄRDEN
         div.innerHTML = `
             <div class='containerDiv'>
             <div class='player1'>
@@ -76,22 +75,10 @@ export class Match {
              <p>${this.#player2.catchphrase === "..." ? "" : this.#player2.catchphrase ?? ""}</p>
             </div>
             </div>
-        `; //Om spelarens catchphrase är "..." returneras "", annars returneras spelarens catchphrase. Om catchphrase är null eller undefines returneras en tom stäng
-
-        this.div = div;
-        this.renderDom();
+        `; 
+        this.matchDiv = div;
         return div;
     }
 
-    renderDom() { //Uppdaterar matchens utseende baserat på dess tillstånd
-        if (!this.matchDiv) return;
-    }
-
-    renderSemi() {
-        let semiPlayers = [];
-        semiPlayers = this.#winner;
-
-        const semi = semiPlayers.map(s => s.this.#winner);
-    }
 }
 

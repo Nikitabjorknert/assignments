@@ -28,13 +28,43 @@
 
 .play-btn {
     background-color: rgb(166, 207, 164);
-    padding: 10px;
     border-radius: 13px;
     font-size: 17px;
+    width: 200px;
+    padding: 5px;
 }
-#match1 {
+.reset-btn {
+    background-color: rgb(218, 218, 216);
+    font-size: 17px;
+    border-radius: 13px;
+    width: 200px;
+    padding: 5px;
+}
+#btnStatus {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    padding: 10px;
+    gap: 10px;
+    margin: auto;
+    justify-content: center;
+}
+
+.matchSection {
+    width: 100%;
+}
+#matchContainer {
     margin: 20px;
-    width: 33%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.stage-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 div.match {
     gap: 10px;
