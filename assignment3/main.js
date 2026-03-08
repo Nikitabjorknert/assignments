@@ -6,133 +6,213 @@ import { renderNav } from "../nav.js";
 
 const rubrik = document.getElementById('rubrik');
 const assignment = assignments.find(assignments => assignments.id === 'Uppgift 3');
-const h3 = document.createElement('h3');
+const h4 = document.createElement('h4');
+const h2 = document.createElement('h2');
 const h1 = document.createElement('h1');
 const a = document.createElement('a');
 
-h3.textContent = assignment.id;
-h1.textContent = assignment.title;
+h4.textContent = assignment.id;
+h2.textContent = "Husdjur i en atletisk tävling";
+h1.textContent = "HUSDJURSMÄSTERSKAPET";
 a.href = "../index.html";
 a.textContent = 'Tillbaka till start';
 
-rubrik.append(h1, h3, a);
+rubrik.append(h1, h2, h4, a);
 renderNav(1);
 
 
 /*------------ Uppgift 3 ----------------*/
 
-const container = document.getElementById('matchContainer');
+const round1 = document.getElementById('round1'); 
+const round2 = document.getElementById('round2'); 
+const round3 = document.getElementById('round3'); 
+
+const title1 = document.getElementById('title1');
+const title2 = document.getElementById('title2');
+const title3 = document.getElementById('title3');
+
 const btnPosition = document.getElementById('btnStatus');
 
 const matchBtn = document.createElement('button');
 matchBtn.classList.add('play-btn');
+matchBtn.textContent = 'Spela kvartsfinal';
 btnPosition.appendChild(matchBtn);
 
 const resetBtn = document.createElement('button');
 resetBtn.classList.add('reset-btn');
-resetBtn.textContent = 'Börja om';
+resetBtn.textContent = 'Starta om';
 btnPosition.appendChild(resetBtn);
 
-let allPlayers = [];
-let nextPlayers = [];
-let matchName = "";
-let currentMatches = [];
+let allPlayers = []; 
+let nextPlayers = []; 
+let currentMatches = []; 
 
-function getMatchName(playersAmout) {
-    if (playersAmout === 8) return "Kvartsfinal";
-    if (playersAmout === 4) return "Semifinal";
-    if (playersAmout === 2) return "Final";
-}
+const rounds = {
+    Kvartsfinal: round1,
+    Semifinal: round2,
+    Final: round3
+};
+const titles = {
+    Kvartsfinal: title1,
+    Semifinal: title2,
+    Final: title3
+};
 
-//Skapar matchobjekt
-function makeMatches(players) {
-    const matches = [];
-    
-    for (let i = 0; i < players.length; i += 2) {
-       const match = new Match(players[i], players[i + 1]);
-       matches.push(match);
-    }
-    
-    return matches;
-}
+function getMatchName(playersAmout) { 
+    if (playersAmout === 8) return 'Kvartsfinal'; 
+    if (playersAmout === 4) return 'Semifinal'; 
+    if (playersAmout === 2) return 'Final'; 
+    console.log('funkar?', getMatchName); 
+    return null; 
+} 
+//Skapar matchobjekt 
+function makeMatches(players) { 
+const matches = []; 
+for (let i = 0; i < players.length; i += 2) { 
+    const match = new Match(players[i], players[i + 1]); 
+    matches.push(match); 
+} 
 
-matchBtn.addEventListener('click', () => {
-        // start with full player list if we've emptied it
-        if (nextPlayers.length === 0) {
-            nextPlayers = allPlayers.slice();
-        }
+return matches;
+ } 
 
-        // play the current round (sets matchName, nextPlayers)
-        playMatch();
 
-        // update button text for the following round (based on new nextPlayers)
-        if (nextPlayers.length === 8) {
-            matchBtn.textContent = 'Spela kvartsfinal';
-        } else if (nextPlayers.length === 4) {
-            matchBtn.textContent = 'Spela semifinal';
-        } else if (nextPlayers.length === 2) {
-            matchBtn.textContent = 'Spela final';
-        } else if (nextPlayers.length <= 1) {
-            matchBtn.disabled = true;
-        }
-});
 
-//Renderar rundan
-function renderCurrentMatch(matches, matchName) {
-    const matchSection = document.createElement('section');
-    matchSection.classList.add('matchSection');
+    function renderCurrentMatch(matches, matchName) { 
+     
+        const round = rounds[matchName];
+        const title = titles[matchName];
+        
+         title.textContent = matchName;
+        title.classList.remove('hidden');
 
-    const h3 = document.createElement('h3');
-    h3.textContent = matchName;
-    matchSection.appendChild(h3);
+        console.log('matchName:', matchName);
+        console.log('round:', round); 
+        
+        //tar bara bort matcherna, inte titel 
+        round.querySelectorAll('.match').forEach(match => match.remove()); 
 
-    matches.forEach(m => {
-        matchSection.appendChild(m.renderMatch());
-    });
-    container.appendChild(matchSection);
-}
+        //lägg till matcher 
+        matches.forEach(m => { 
+            round.appendChild(m.renderMatch());
+         }); 
+        //visa runda 
+        round.classList.remove('hidden'); 
+       
+    } 
 
-function playMatch() {
-    //Nuvarande runda
-    matchName = getMatchName(nextPlayers.length);
-    currentMatches = makeMatches(nextPlayers);
+    function prepareRound(players) { 
+       const matchName = getMatchName(players.length);
 
-    //Visa rundan
+      console.log("players:", players);
+    console.log("players.length:", players.length);
+     console.log("matchName:", matchName);
+
+    currentMatches = makeMatches(players);
     renderCurrentMatch(currentMatches, matchName);
+}
+    
+    function playMatch() { 
+     
+     //Spela rundan
+     currentMatches.forEach(m => m.compete());
 
-    //Spela rundan
-     currentMatches.forEach(m => m.createRound());
+       //Samla vinnarna
+      const winners = currentMatches.map(m => m.winner);
 
-     //Samla vinnarna
-      const winners = currentMatches.map(w => w.winner);
-
-      //Uppdatera till nästa runda
-    nextPlayers = winners;
-    }
-
-
-
-resetBtn.addEventListener('click', () => {
-    container.innerHTML = '';
-    nextPlayers = allPlayers.slice();
-    currentMatches = [];
-    matchBtn.disabled = false;
-    matchBtn.textContent = 'Spela kvartsfinal';
-});
-
-async function fetchData() {
-    const response = await fetch('contestants.json');
-    allPlayers = await response.json();
-
-    if (allPlayers.length === 0) {
+    if (winners.length === 1) {
+        matchBtn.disabled = true;
         return;
     }
+        //Uppdatera till nästa runda 
+        nextPlayers = winners; 
+        prepareRound(nextPlayers); 
+        // update button text for the following round (based on new nextPlayers) 
+        if (nextPlayers.length === 4) { 
+            matchBtn.textContent = 'Spela semifinal'; 
+        } else if (nextPlayers.length === 2) { 
+            matchBtn.textContent = 'Spela final'; 
+        } 
+    } 
 
-    nextPlayers = allPlayers.slice();
-    matchBtn.textContent = 'Spela kvartsfinal';
-    //playMatch();
-}
-fetchData();
+
+    function resetMatches() { 
+        [round1, round2, round3].forEach(round => {
+            round.querySelectorAll('.match').forEach(match => match.remove());
+        });
+       
+        round2.classList.add('hidden'); 
+        round3.classList.add('hidden'); 
+        
+        title2.classList.add('hidden');
+title3.classList.add('hidden');
+
+        nextPlayers = allPlayers.slice(); 
+        currentMatches = []; 
+
+        prepareRound(nextPlayers);
+
+        matchBtn.disabled = false; 
+        matchBtn.textContent = "Spela kvartsfinal"; 
+    } 
+    
+    matchBtn.addEventListener('click', playMatch); 
+    resetBtn.addEventListener('click', resetMatches); 
+    
+    async function fetchData() { 
+        const response = await fetch('contestants.json'); allPlayers = await response.json();
+
+         if (allPlayers.length !== 8) { 
+            return; 
+        } 
+
+        nextPlayers = allPlayers.slice(); 
+        
+        prepareRound(nextPlayers); 
+        
+        matchBtn.textContent = 'Spela kvartsfinal'; 
+        matchBtn.disabled = false; 
+
+        round2.classList.add('hidden'); 
+        round3.classList.add('hidden'); 
+    } 
+        fetchData();
+
+/*-
+function getSection(matchName) {
+    if (matchName === "Kvartsfinal") return round1;
+    if (matchName === "Semifinal") return round2;
+    if (matchName === "Final") return round3;
+
+    console.log('funkar?', matchName);
+    return null;
+} 
+
+
+function getTitle(matchName) {
+    if (matchName === "Kvartsfinal") return title1;
+    if (matchName === "Semifinal") return title2;
+    if (matchName === "Final") return title3;
+
+    return null;
+} -*/
+
+
+
+   
+
+
+
+
+
+
+/*-
+    round1.querySelectorAll('.match').forEach(match => match.remove());
+    round2.querySelectorAll('.match').forEach(match => match.remove());
+    round3.querySelectorAll('.match').forEach(match => match.remove()); -*/
+
+   
+
 
 
 

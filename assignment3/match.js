@@ -26,7 +26,7 @@ export class Match {
         return this.played;
     }
 
-    createRound() { //Simulerar matchen och bestämmer vinnaren
+    compete() { //Simulerar matchen och bestämmer vinnaren
         if (this.played) { 
             return this.#winner; 
         }
@@ -60,19 +60,18 @@ export class Match {
         div.classList.add('match');
 
         div.innerHTML = `
-            <div class='containerDiv'>
+            <div class='round'>
             <div class='player1'>
             <h3>${this.#player1.name}</h3>
-            <p>Skillevel: ${this.#player1.skillLevel}</p>
-             <p>${this.#player1.catchphrase === "..." ? "" : this.#player1.catchphrase ?? ""}</p>
+            <p>Skillevel: ${this.#player1.skillLevel ?? 4}</p>
+             <p>${this.#player1.catchphrase === "..." ? "Du har ingen chans..." : this.#player1.catchphrase ?? "Du har ingen chans..."}</p>
            </div>
-
             <h5>VS</h5>
-           
+    
             <div class='player2'>
             <h3>${this.#player2.name}</h3>
-            <P>Skillevel: ${this.#player2.skillLevel}</P>
-             <p>${this.#player2.catchphrase === "..." ? "" : this.#player2.catchphrase ?? ""}</p>
+            <P>Skillevel: ${this.#player2.skillLevel ?? 4}</P>
+             <p>${this.#player2.catchphrase === "..." ? "Du har ingen chans..." : this.#player2.catchphrase ?? "Du har ingen chans..."}</p>
             </div>
             </div>
         `; 

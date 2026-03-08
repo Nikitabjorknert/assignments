@@ -1,7 +1,27 @@
 #sidhuvud {
-    background-color: rgb(227, 219, 175);
+    background-color: rgb(242, 226, 197);
+    border-bottom: 1px solid rgb(149, 91, 21);
+    font-family: Arial, Helvetica, sans-serif;
 }
 
+body {
+     font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(252, 245, 238);
+}
+#rubrik h1 {
+    text-align: center;
+    font-weight: 800;
+    color: rgb(62, 35, 12);
+}
+#rubrik h2 {
+    font-weight: 100;
+    text-align: center;
+    color: rgb(119, 77, 48);
+}
+#rubrik h4 {
+    font-weight: 100;
+    text-align: center;
+}
 #rubrik a {
     color: rgb(8, 31, 148);
 }
@@ -14,11 +34,11 @@
 .globalNav a.active { 
     color: rgb(1, 1, 0); 
     text-decoration: none;
-    border: 2px solid rgb(86, 81, 81);
+    border: 2px solid rgb(199, 170, 127);
     font-weight: bold;
     font-size: 17px;
-    background-color: rgb(229, 196, 165);
-    box-shadow: 2px 1px 3px 2px rgb(190, 130, 80);
+    background-color: rgb(248, 241, 232);
+    box-shadow: 2px 1px 3px 2px rgb(196, 175, 158);
     padding: 15px;
 } 
 .globalNav a:hover {
@@ -27,18 +47,22 @@
 
 
 .play-btn {
-    background-color: rgb(166, 207, 164);
+    background-color: rgb(226, 176, 133);
     border-radius: 13px;
+    border: 1.5px solid rgb(160, 113, 67);
     font-size: 17px;
     width: 200px;
     padding: 5px;
+    height: 40px;
 }
 .reset-btn {
-    background-color: rgb(218, 218, 216);
+    background-color: rgb(215, 211, 210);
     font-size: 17px;
     border-radius: 13px;
+    border: 1.5px solid rgb(165, 161, 158);
     width: 200px;
     padding: 5px;
+    height: 40px;
 }
 #btnStatus {
     display: flex;
@@ -48,44 +72,69 @@
     gap: 10px;
     margin: auto;
     justify-content: center;
+    height: 40px;
+    background-color: rgb(250, 250, 250);
+    border-bottom: 1px solid rgb(149, 91, 21);
 }
 
-.matchSection {
-    width: 100%;
-}
-#matchContainer {
-    margin: 20px;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
-}
-
-.stage-column {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-div.match {
-    gap: 10px;
-    border: 1px solid rgb(121, 121, 121);
-    border-radius: 12px;
-    padding: 10px;
-    margin: 10px;
-    background-color: rgb(251, 243, 232);
-}
 div h5 {
     font-size: 20px;
     font-weight: bold;
     color: rgb(173, 10, 10);
+    text-align: center;
+   
 }
-
 .winner {
     background-color: rgb(198, 229, 201);
-    border: 1px solid green;
+    border: 1px solid rgb(151, 195, 151);
     border-radius: 5px;
-    padding-left: 10px;
 }
 .loser {
     color: rgb(124, 124, 124);
+}
+
+.bracket {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;  /* Sträcker ut rundorna vertikalt */
+  gap: 2rem;
+    width: 100%;
+}
+
+.round {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;  /* Matcherna fördelas jämnt i det vertikala utrymmet */
+  gap: 1rem;
+  width: 33%;
+}
+
+.match {
+    border: 1px solid rgb(183, 183, 183);
+    border-radius: 12px;
+    padding: 10px;
+    margin: 10px;
+    background-color: rgb(250, 250, 250);
+}
+
+.match div {
+    width: 98%;
+    line-height: 15px;
+    padding: 3px;
+}
+
+.hidden {
+    display: none;
+}
+.titles {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3em;
+    text-align: center;
+    letter-spacing: 1px;
+    font-size: 19px;
+    color: rgb(115, 23, 23);
+}
+.titles.hidden {
+    display: none;
 }
