@@ -27,10 +27,10 @@ export class Match {
     }
 
     compete() { //Simulerar matchen och bestämmer vinnaren
-        if (this.played) { 
-            return this.#winner; 
+        if (this.played) {
+            return this.#winner;
         }
-        
+
         const skillA = this.players[0];
         const skillB = this.players[1];
         const chanceA = skillA.skillLevel / (skillA.skillLevel + skillB.skillLevel);
@@ -41,19 +41,19 @@ export class Match {
         if (this.matchDiv) {
 
             const playerA = this.matchDiv.querySelector('.player1');
-            const playerB =this.matchDiv.querySelector('.player2');
+            const playerB = this.matchDiv.querySelector('.player2');
 
             if (this.#winner === skillA) {
-            playerA.classList.add('winner');
-            playerB.classList.add('loser');
-        } else {
-            playerB.classList.add('winner');
-            playerA.classList.add('loser');
+                playerA.classList.add('winner');
+                playerB.classList.add('loser');
+            } else {
+                playerB.classList.add('winner');
+                playerA.classList.add('loser');
+            }
+            console.log("Vinnare:", this.#winner);
         }
-        console.log("Vinnare:", this.#winner);
+        return this.#winner;
     }
-           return this.#winner;        
- }
 
     renderMatch() { //returnerar elementet som representerar matchen i DOM:en
         const div = document.createElement('div');
@@ -74,7 +74,7 @@ export class Match {
              <p>${this.#player2.catchphrase === "..." ? "Du har ingen chans..." : this.#player2.catchphrase ?? "Du har ingen chans..."}</p>
             </div>
             </div>
-        `; 
+        `;
         this.matchDiv = div;
         return div;
     }
