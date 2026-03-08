@@ -78,6 +78,5 @@ export class Match {
         this.matchDiv = div;
         return div;
     }
-
 }
 

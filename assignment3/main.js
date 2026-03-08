@@ -76,8 +76,6 @@ function makeMatches(players) {
     return matches;
 }
 
-
-
 function renderCurrentMatch(matches, matchName) {
 
     const round = rounds[matchName];
@@ -134,7 +132,7 @@ function playMatch() {
     }
 }
 
-
+//Rundor töms och göms
 function resetMatches() {
     [round1, round2, round3].forEach(round => {
         round.querySelectorAll('.match').forEach(match => match.remove());
@@ -166,12 +164,12 @@ async function fetchData() {
     }
 
     nextPlayers = allPlayers.slice();
-
     prepareRound(nextPlayers);
 
     matchBtn.textContent = 'Spela kvartsfinal';
     matchBtn.disabled = false;
 
+    //round1 får ej klassen eftersom den rundan ska synas när sidan laddas.
     round2.classList.add('hidden');
     round3.classList.add('hidden');
 }

@@ -16,7 +16,7 @@ export const assignments = [
       {
         id: 'Uppgift 3',
         title: 'Turneringsgeneratorn',
-        description: 'Inuppgift 3 ska du bygga en applikation för att visualisera slutspel i en turnering.',
+        description: 'I uppgift 3 byggdes turneringen "Husdjursmästerskapet" där husdjuren tävlar mot varandra i kvarts-, semi- och final.',
         link: "assignment3/index.html",
     }
 ];
