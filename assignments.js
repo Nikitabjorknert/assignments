@@ -18,6 +18,12 @@ export const assignments = [
         title: 'Turneringsgeneratorn',
         description: 'I uppgift 3 byggdes turneringen "Husdjursmästerskapet" där husdjuren tävlar mot varandra i kvarts-, semi- och final.',
         link: "assignment3/index.html",
+    },
+    {
+        id: 'Uppgift 4',
+        title: 'Spökbyrån',
+        description: 'Beskrivning',
+        link: "assignment4/index.html",
     }
 ];
 console.log("Lista");
