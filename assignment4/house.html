@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hus</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Spökhusbyrån</h1>
+    </header>
+
+    <main>
+        <div>
+            <img src="./images/dimhults-fjallstuga.jpg" alt="Fjällstugan">
+            <h2>Namn</h2>
+            <p>Plats</p>
+            <p>Koordinater</p>
+            <p>lng</p>
+             <p>Beskrivning</p>
+            <p>Pris/natt</p>
+            <p>Skräcknivå</p>
+            <p>Söktyp</p>
+            <p>Har wifi?</p>
+            <button>Läs mer och boka</button>
+        </div>
+
+        <a href="./index.html">Tillbaka till översikt</a>
+
+        <form>
+            <fieldset>
+            <label for="datum">Incheckningsdatum:</label>
+            <input type="date" id="datum" min="2026-03-12" required>
+
+            <label for="dagar">Antal dagar:</label>
+            <input type="number" id="dagar" min="1" required>
+
+            </fieldset>
+
+            <fieldset>
+                 <legend>Tillägg:</legend>
+           <input type="checkbox" name="check" id="check" value="100" required>
+            <label for="check">Frukost 100kr</label>
+
+            <input type="checkbox" name="check" id="check" value="300" required>
+            <label for="check">Spökvandring 300kr</label>
+
+            <input type="checkbox" name="check" id="check" value="500" required>
+            <label for="check">Nattlig seans 500kr</label>
+            </fieldset>
+
+            <fieldset>
+                
+                <label for="code">Kampanjkod:</label>
+                <input type="text" id="code" placeholder="ex GHOST">
+            </fieldset>
+            <button type="submit">Boka</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>Spökbyrån</p>
+    </footer>
+
+</body>
+</html>
