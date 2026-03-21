@@ -1,64 +1,142 @@
 
-let data = [];
+let allData = [];
 
 async function fetchData() {
-    try {
-    const response = await fetch('data/house.json');
-    data = await response.json();
-    console.log(data);
-} catch (error) {
-    console.log("error");
-    error.classList.add('error');
-    error.textContent = "Något gick fel";
-}
-renderCards(data);
+     const response = await fetch('data/house.json');
+    return await response.json();
 }
 
-const rubrikDiv = document.createElement('header');
-const rubrik = document.createElement('h1');
-rubrik.textContent = "Spökhusbyrån"
-rubrikDiv.append(rubrik);
-
-fetchData();
+const header = document.getElementById('rubrik');
+const h1 = document.createElement('h1');
+h1.textContent = "Spökhusbyrån";
+header.append(h1);
 
 const container = document.getElementById('card');
 
-export function renderCards() {
-    for (const d of data) {
-    const div = document.createElement('div');
-    div.classList.add('houseCards');
+//Rendera alla kort
+export function renderCards(renderData) {
+    container.innerHTML = "";
 
-    div.innerHTML = `
+    for (const d of renderData) {
+        const div = document.createElement('div');
+        div.classList.add('houseCards');
+
+        let pEl = "";
+
+        if (d.scareLevel === 1) {
+            pEl = "Mysigt";
+        } else if (d.scareLevel === 2) {
+            pEl = "Lite läskig";
+        } else if (d.scareLevel === 3) {
+            pEl = "Obehagligt";
+        } else if (d.scareLevel === 4) {
+            pEl = "Läskigt";
+        } else if (d.scareLevel === 5) {
+            pEl = "Mycket läskigt";
+        }
+
+        div.innerHTML = `
     <img class="bilder" src="./images/${d.image}" alt="${d.name}">
     <h2>${d.name}</h2>
     <h4>${d.location}</h4>
     <p>Pris per natt: ${d.pricePerNight} kr</p>
+    <p>${pEl}</p>
+    <button class="cardBtn">Läs mer och boka</button>
     `;
 
-    container.append(div);
-
-    const pEl = document.createElement('p');
-    pEl.textContent = d.scareLevel;
-
- if (d.scareLevel === 1) {
-    pEl.textContent = "Mysigt";
- }
-    else if (d.scareLevel === 2) {
-        pEl.textContent = "Lite läskig";
-    } else if (d.scareLevel === 3) {
-        pEl.textContent = "Obehagligt";
-    } else if (d.scareLevel === 4) { 
-        pEl.textContent = "Läskigt";
-    } else if (d.scareLevel === 5) { 
-        pEl.textContent = "Mycket läskigt";
+        container.append(div);
     }
-
-    const btn = document.createElement('button');
-    btn.textContent = "Läs mer och boka";
-    btn.href = "house.html?id=1";
-
-    div.appendChild(pEl);
-    div.appendChild(btn);
 }
+
+//Filtrera alla pris per natt
+function filterPrice() {
+    const priceInput = document.querySelector('#price');
+
+    priceInput.addEventListener('input', () => {
+        const pValue = Number(priceInput.value);
+
+        if (!pValue) {
+            renderCards(allData);
+            return;
+        }
+        const filtered = allData.filter(d => d.pricePerNight <= pValue);
+
+        renderCards(filtered);
+        console.log(filtered);
+    });
 }
+
+    //Filtrerar skräcknivån
+    function filterScareLevel() {
+        const scareSlider = document.querySelector('#scareLevel');
+        const scareValue = document.querySelector('#scare-value');
+    
+    scareSlider.addEventListener('input', () => {
+        const sLevelValue = Number(scareSlider.value);
+        scareValue.textContent = sLevelValue;
+
+        if (sLevelValue === 0) {
+            renderCards(allData);
+            return;
+        }
+            const filtered = allData.filter(d => d.scareLevel >= sLevelValue);
+            console.log(filtered);
+        
+        renderCards(filtered);
+    });
+}
+
+//Filtrerar spöken
+function filterGhosts() {
+
+    const ghostDropdown = document.querySelector('#ghost');
+
+    ghostDropdown.addEventListener('change', () => {
+        //Array-filter
+        const selected = ghostDropdown.value;
+        
+
+        const filtered = allData.filter(d => {
+            return selected === "allatyper" || d.ghostTypes.includes(selected);
+    });
+    renderCards(filtered);
+       console.log(filtered);
+});
+}
+
+function filterWifi() {
+    const wifiCheckbox = document.querySelector('#wifi');
+
+    wifiCheckbox.addEventListener('change', () => {
+        if (wifiCheckbox.checked) {
+            const filtered = allData.filter(d => d.hasWifi === true);
+            renderCards(filtered);
+            console.log(filtered);
+        } else {
+            renderCards(allData);
+        }
+    });
+}
+
+async function init() {
+     try {
+        allData = await fetchData();
+
+        renderCards(allData);
+        filterPrice();
+        filterScareLevel();
+        filterGhosts();
+        filterWifi();
+       
+        console.log(allData);
+    } catch (error) {
+        console.log("error");
+        const errorEl = document.getElementById('error');
+        errorEl.classList.add('error');
+        errorEl.textContent = "Något gick fel";
+    }
+}
+
+init();
+
 
