@@ -7,9 +7,11 @@ async function fetchData() {
 }
 
 const header = document.getElementById('rubrik');
+if (header) {
 const h1 = document.createElement('h1');
 h1.textContent = "Spökhusbyrån";
 header.append(h1);
+}
 
 const container = document.getElementById('card');
 
@@ -41,13 +43,23 @@ export function renderCards(renderData) {
     <h4>${d.location}</h4>
     <p>Pris per natt: ${d.pricePerNight} kr</p>
     <p>${pEl}</p>
-    <button class="cardBtn">Läs mer och boka</button>
+    <button class="cardBtn" data-id="${d.id}">Läs mer och boka</button>
     `;
 
         container.append(div);
     }
+  
 }
 
+if (container) {
+  container.addEventListener('click', (e) => {
+        if (e.target.classList.contains("cardBtn")) {
+            const id = e.target.dataset.id;
+
+            window.location.href = `house.html?id=${id}`;
+        }
+    });
+}
 //Filtrera alla pris per natt
 function filterPrice() {
     const priceInput = document.querySelector('#price');
@@ -130,10 +142,11 @@ async function init() {
        
         console.log(allData);
     } catch (error) {
-        console.log("error");
+         console.error("Felet är: ", error);
         const errorEl = document.getElementById('error');
         errorEl.classList.add('error');
         errorEl.textContent = "Något gick fel";
+        
     }
 }
 
