@@ -7,11 +7,13 @@ async function fetchData() {
 }
 
 const header = document.getElementById('rubrik');
-if (header) {
 const h1 = document.createElement('h1');
-h1.textContent = "Spökhusbyrån";
-header.append(h1);
-}
+h1.textContent = "SPÖKHUSBYRÅN AB";
+h1.classList.add('huvudrubrik');
+const h3 = document.createElement('h3');
+h3.textContent = "HYR ETT HEMSÖKT HUS";
+h3.classList.add('underrubrik');
+header.append(h1, h3);
 
 const container = document.getElementById('card');
 
@@ -24,26 +26,37 @@ export function renderCards(renderData) {
         div.classList.add('houseCards');
 
         let pEl = "";
+        let scareStyle = "";
 
         if (d.scareLevel === 1) {
-            pEl = "Mysigt";
+            pEl = "MYSIGT";
+            scareStyle = "mysigt";
         } else if (d.scareLevel === 2) {
-            pEl = "Lite läskig";
+            pEl = "LITE LÄSKIGT";
+              scareStyle = "lite";
         } else if (d.scareLevel === 3) {
-            pEl = "Obehagligt";
+            pEl = "OBEHAGLIGT";
+              scareStyle = "obehagligt";
         } else if (d.scareLevel === 4) {
-            pEl = "Läskigt";
+            pEl = "LÄSKIGT";
+              scareStyle = "läskigt";
         } else if (d.scareLevel === 5) {
-            pEl = "Mycket läskigt";
+            pEl = "REN TERROR";
+              scareStyle = "mycket";
         }
+       
 
         div.innerHTML = `
     <img class="bilder" src="./images/${d.image}" alt="${d.name}">
-    <h2>${d.name}</h2>
-    <h4>${d.location}</h4>
-    <p>Pris per natt: ${d.pricePerNight} kr</p>
-    <p>${pEl}</p>
-    <button class="cardBtn" data-id="${d.id}">Läs mer och boka</button>
+    <h3 class="name">${d.name.toUpperCase()}</h3>
+    <p class="location">${d.location.toUpperCase()}</p>
+    <div class="inline-items">
+    <h4 class="price">${d.pricePerNight} KR/NATT</h4>
+    <p class="scareLevel ${scareStyle}">${pEl}</p>
+    </div>
+    <p class="ghosttype">Spöken: ${d.ghostTypes.join(", ")}</p>
+    <p class="wifi">${d.hasWifi ? "WiFi ingår" : "Inget WiFi"}</p>
+    <button class="cardBtn" data-id="${d.id}">LÄS MER OCH BOKA</button>
     `;
 
         container.append(div);
