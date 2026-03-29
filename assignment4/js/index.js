@@ -2,7 +2,7 @@
 let allData = [];
 
 async function fetchData() {
-     const response = await fetch('data/house.json');
+    const response = await fetch('data/house.json');
     return await response.json();
 }
 
@@ -21,30 +21,42 @@ const container = document.getElementById('card');
 export function renderCards(renderData) {
     container.innerHTML = "";
 
+    if (renderData.length === 0) {
+        container.innerHTML = "<p class='noResults'>Inga resultat matchar dina filterval</p>";
+        return;
+    }
+
     for (const d of renderData) {
         const div = document.createElement('div');
         div.classList.add('houseCards');
 
         let pEl = "";
         let scareStyle = "";
+        let scareText = document.getElementById('scare-value');
+
 
         if (d.scareLevel === 1) {
             pEl = "MYSIGT";
             scareStyle = "mysigt";
+            scareText.textContent = "Mysigt";
         } else if (d.scareLevel === 2) {
             pEl = "LITE LÄSKIGT";
-              scareStyle = "lite";
+            scareStyle = "lite";
+            scareText.textContent = "Lite Läskigt";
         } else if (d.scareLevel === 3) {
             pEl = "OBEHAGLIGT";
-              scareStyle = "obehagligt";
+            scareStyle = "obehagligt";
+            scareText.textContent = "Obehagligt";
         } else if (d.scareLevel === 4) {
             pEl = "LÄSKIGT";
-              scareStyle = "läskigt";
+            scareStyle = "läskigt";
+            scareText.textContent = "Läskigt";
         } else if (d.scareLevel === 5) {
             pEl = "REN TERROR";
-              scareStyle = "mycket";
+            scareStyle = "mycket";
+            scareText.textContent = "Ren Terror";
         }
-       
+
 
         div.innerHTML = `
     <img class="bilder" src="./images/${d.image}" alt="${d.name}">
@@ -61,11 +73,11 @@ export function renderCards(renderData) {
 
         container.append(div);
     }
-  
+
 }
 
 if (container) {
-  container.addEventListener('click', (e) => {
+    container.addEventListener('click', (e) => {
         if (e.target.classList.contains("cardBtn")) {
             const id = e.target.dataset.id;
 
@@ -73,93 +85,49 @@ if (container) {
         }
     });
 }
-//Filtrera alla pris per natt
-function filterPrice() {
-    const priceInput = document.querySelector('#price');
 
-    priceInput.addEventListener('input', () => {
-        const pValue = Number(priceInput.value);
+function applyFilters() {
+    const filtered = allData.filter(d => {
+        const filteredGhosts = document.querySelector('#ghost').value;
+        const filteredPrice = Number(document.querySelector('#price').value);
+        const filteredScareLevel = Number(document.querySelector('#scareLevel').value);
+        const wifiChecked = document.querySelector('#wifi').checked;
 
-        if (!pValue) {
-            renderCards(allData);
-            return;
-        }
-        const filtered = allData.filter(d => d.pricePerNight <= pValue);
+        const matchesGhosts = !filteredGhosts || d.ghostTypes.includes(filteredGhosts);
+        const matchesPrice = !filteredPrice || d.pricePerNight <= filteredPrice;
+        const matchesScareLevel = !filteredScareLevel || d.scareLevel >= filteredScareLevel;
+        const matchesWifi = !wifiChecked || d.hasWifi === true;
 
-        renderCards(filtered);
-        console.log(filtered);
+
+        return matchesGhosts && matchesPrice && matchesScareLevel && matchesWifi;
+
     });
-}
 
-    //Filtrerar skräcknivån
-    function filterScareLevel() {
-        const scareSlider = document.querySelector('#scareLevel');
-        const scareValue = document.querySelector('#scare-value');
-    
-    scareSlider.addEventListener('input', () => {
-        const sLevelValue = Number(scareSlider.value);
-        scareValue.textContent = sLevelValue;
-
-        if (sLevelValue === 0) {
-            renderCards(allData);
-            return;
-        }
-            const filtered = allData.filter(d => d.scareLevel >= sLevelValue);
-            console.log(filtered);
-        
-        renderCards(filtered);
-    });
-}
-
-//Filtrerar spöken
-function filterGhosts() {
-
-    const ghostDropdown = document.querySelector('#ghost');
-
-    ghostDropdown.addEventListener('change', () => {
-        //Array-filter
-        const selected = ghostDropdown.value;
-        
-
-        const filtered = allData.filter(d => {
-            return selected === "allatyper" || d.ghostTypes.includes(selected);
-    });
     renderCards(filtered);
-       console.log(filtered);
-});
+};
+
+function useFilters() {
+    document.querySelector('#ghost').addEventListener('change', applyFilters);
+    document.querySelector('#price').addEventListener('input', applyFilters);
+    document.querySelector('#scareLevel').addEventListener('input', applyFilters);
+    document.querySelector('#wifi').addEventListener('change', applyFilters);
 }
 
-function filterWifi() {
-    const wifiCheckbox = document.querySelector('#wifi');
-
-    wifiCheckbox.addEventListener('change', () => {
-        if (wifiCheckbox.checked) {
-            const filtered = allData.filter(d => d.hasWifi === true);
-            renderCards(filtered);
-            console.log(filtered);
-        } else {
-            renderCards(allData);
-        }
-    });
-}
 
 async function init() {
-     try {
+    try {
         allData = await fetchData();
 
         renderCards(allData);
-        filterPrice();
-        filterScareLevel();
-        filterGhosts();
-        filterWifi();
-       
+        useFilters();
+
         console.log(allData);
     } catch (error) {
-         console.error("Felet är: ", error);
+        console.error("Felet är: ", error);
         const errorEl = document.getElementById('error');
         errorEl.classList.add('error');
         errorEl.textContent = "Något gick fel";
-        
+
     }
 }
 

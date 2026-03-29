@@ -1,55 +1,56 @@
 
 export class Booking {
-        constructor(bookForm, house) {
-            this.bookForm = document.getElementById(bookForm);
-            this.house = house;
-           
-            const h2 = document.getElementById('bookHouse');
-            h2.textContent = `BOKA ${house.name.toUpperCase()}`;
-            h2.classList.add('booking-title');
-            this.bookForm.prepend(h2);
+    constructor(bookForm, house) {
+        this.bookForm = document.getElementById(bookForm);
+        this.house = house;
 
-            this.date = this.bookForm.querySelector('#date');
-            this.nights = this.bookForm.querySelector('#nights');
-            this.code = this.bookForm.querySelector('#code');
-            this.breakfast = this.bookForm.querySelector('#breakfast');
-            this.seans = this.bookForm.querySelector('#seans');
-            this.tour = this.bookForm.querySelector('#tour');
-            this.total = this.bookForm.querySelector('#total-price');
-            this.bookBtn = this.bookForm.querySelector('#bookBtn');
-           
+        const h2 = document.getElementById('bookHouse');
+        h2.textContent = `BOKA ${house.name.toUpperCase()}`;
+        h2.classList.add('booking-title');
+        this.bookForm.prepend(h2);
 
-            this.init();
-        }
+        this.date = this.bookForm.querySelector('#date');
+        this.nights = this.bookForm.querySelector('#nights');
+        this.code = this.bookForm.querySelector('#code');
+        this.breakfast = this.bookForm.querySelector('#breakfast');
+        this.seans = this.bookForm.querySelector('#seans');
+        this.tour = this.bookForm.querySelector('#tour');
+        this.total = this.bookForm.querySelector('#total-price');
+        this.bookBtn = this.bookForm.querySelector('#bookBtn');
 
 
-        init() {
+        this.init();
+    }
+
+
+    init() {
+        this.countTotalPrice();
+        this.bookForm.addEventListener('input', () => {
             this.countTotalPrice();
-            this.bookForm.addEventListener('input', () => { this.countTotalPrice(); 
-            });
+        });
 
-            this.bookForm.addEventListener('submit', (e) => { 
-                e.preventDefault();
-                this.bookingConfirmation();
-            });
+        this.bookForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.bookingConfirmation();
+        });
 
-        }
+    }
 
 
     formData() {
         return {
-         dateValue: this.date.value,
-         nightsValue: Number(this.nights.value),
-         breakfastValue: this.breakfast.checked,
-         seansValue: this.seans.checked,
-         tourValue: this.tour.checked,
-         codeValue: this.code.value
+            dateValue: this.date.value,
+            nightsValue: Number(this.nights.value),
+            breakfastValue: this.breakfast.checked,
+            seansValue: this.seans.checked,
+            tourValue: this.tour.checked,
+            codeValue: this.code.value
         };
-       
+
     }
-     totalPrice() {
+    totalPrice() {
         const formValue = this.formData();
-         let totalPrice = this.house.pricePerNight * formValue.nightsValue;
+        let totalPrice = this.house.pricePerNight * formValue.nightsValue;
 
         if (formValue.breakfastValue) {
             totalPrice += 100 * formValue.nightsValue;
@@ -63,7 +64,7 @@ export class Booking {
         if (formValue.codeValue === "GHOST20") {
             totalPrice *= 0.8;
         }
-        return totalPrice; 
+        return totalPrice;
     }
 
     countTotalPrice() {
@@ -95,7 +96,7 @@ export class Booking {
         const summary = this.formData();
         const total = this.totalPrice();
 
-         const confDiv = document.createElement('div');
+        const confDiv = document.createElement('div');
         confDiv.classList.add('confirmation-div');
 
         const h3 = document.createElement('h3');
@@ -118,8 +119,8 @@ export class Booking {
         const codeText = summary.codeValue ? "Kampanjkod: " + summary.codeValue : "";
         codeP.textContent = codeText;
         codeP.classList.add('confirmation-code');
-        
-        
+
+
         let checkedOptions = "Tillägg: ";
         const options = [];
 
@@ -138,7 +139,7 @@ export class Booking {
         } else {
             checkedOptions += "Inga tillägg";
         }
-       
+
         const optionsP = document.createElement('p');
         optionsP.textContent = checkedOptions;
         optionsP.classList.add('confirmation-options');
@@ -152,7 +153,7 @@ export class Booking {
         greeting.classList.add('confirmation-greeting');
 
         confDiv.append(h3, houseP, dateP, nightsP, optionsP, codeP, totalP, greeting);
-      
-       this.bookForm.appendChild(confDiv);
+
+        this.bookForm.appendChild(confDiv);
     }
 }

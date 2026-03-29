@@ -85,18 +85,26 @@ function viewHouse(house) {
     `;
 }
 
-function showMap(house) {
-const map = L.map('map').setView([house.coordinates.lat, house.coordinates.lng], 13);
+function createMap(house) {
+    const errorEl = document.getElementById('error');
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
+    try {
+        const map = L.map('map').setView([house.coordinates.lat, house.coordinates.lng], 13);
 
-L.marker([house.coordinates.lat, house.coordinates.lng])
-.addTo(map)
-.bindPopup(`${house.name}`)
-.openPopup();
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([house.coordinates.lat, house.coordinates.lng])
+            .addTo(map)
+            .bindPopup(`${house.name}`)
+            .openPopup();
+    } catch (error) {
+        errorEl.textContent = "Kartan kunde inte laddas";
+        console.error("Kartan kunde inte laddas: ", error);
+    }
 }
+
 
 async function init() {
     try {
@@ -105,7 +113,7 @@ async function init() {
 
 
         viewHouse(house);
-        showMap(house);
+        createMap(house);
         new Booking("bookForm", house);
 
     } catch (error) {

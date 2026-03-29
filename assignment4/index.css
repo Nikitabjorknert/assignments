@@ -1,3 +1,9 @@
+html {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
 .bilder {
     width: 100%;
 }
@@ -9,33 +15,38 @@
     margin: auto;
     margin-top: 3em;
 }
+
 .houseCards {
     border: 1px solid rgb(44, 44, 44);
     background-color: rgb(26, 26, 26);
 }
+
 .cardBtn {
     background-color: rgba(155, 6, 6, 0.372);
     border: 1px solid rgb(105, 4, 4);
     padding: 7px;
     border-radius: 5px;
     color: rgb(255, 255, 254);
-      font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     margin: 15px;
 }
 
 .name {
-     color: rgb(154, 4, 4);
-     margin-left: 15px;
+    color: rgb(154, 4, 4);
+    margin-left: 15px;
 }
+
 .location {
     color: rgb(213, 213, 213);
     font-size: 12px;
-     margin-left: 15px;
+    margin-left: 15px;
 }
+
 .price {
     color: white;
     margin-left: 15px;
 }
+
 .inline-items {
     display: flex;
     justify-content: space-between;
@@ -45,24 +56,27 @@
 }
 
 .ghosttype {
-     color: rgb(213, 213, 213);
+    color: rgb(213, 213, 213);
     font-size: 15px;
-     margin-left: 15px;
-     font-style: italic;
+    margin-left: 15px;
+    font-style: italic;
 }
+
 .wifi {
-     color: rgb(213, 213, 213);
+    color: rgb(213, 213, 213);
     font-size: 15px;
-     margin-left: 15px;
+    margin-left: 15px;
 }
 
 #input-field {
     margin: 1em;
 }
+
 input,
 select {
     margin-right: 15px;
 }
+
 input[type="checkbox"]:checked {
     accent-color: rgb(167, 3, 3);
 }
@@ -71,3 +85,10 @@ input[type="range"]:focus {
     accent-color: rgb(167, 3, 3);
 }
 
+.noResults {
+    font-size: 20px;
+    color: rgb(213, 213, 213);
+    text-align: center;
+    margin-top: 2em;
+    border: 2px solid rgb(167, 3, 3);
+}
