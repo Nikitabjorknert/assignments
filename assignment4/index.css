@@ -89,6 +89,11 @@ input[type="range"]:focus {
     font-size: 20px;
     color: rgb(213, 213, 213);
     text-align: center;
-    margin-top: 2em;
     border: 2px solid rgb(167, 3, 3);
+    background-color: rgba(77, 15, 15, 0.37);
+    display: inline-block;
+    justify-content: center;
+    width: 80%;
+    padding: 2em;
+    margin-left: 6em;
 }
