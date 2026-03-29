@@ -1,19 +1,145 @@
+
+/* --- HUS --- */
 #house {
-    width: 61%;
+    width: 50%;
     margin: auto;
     margin-top: 3em;
     border: 1px solid rgb(44, 44, 44);
     background-color: rgb(26, 26, 26);
+    margin-bottom: 3em;
+}
+.bilder {
+    width: 100%;
 }
 .housename {
     color: rgb(154, 4, 4);
     font-size: 30px;
+     margin: 20px;
+}
+.place {
+     margin: 20px;
+}
+.description {
+    margin: 20px;
 }
 .inline-items {
     display: flex;
     justify-content: space-between;
+    font-size: 20px;
+    align-items: center;
+    font-weight: bold;
+    border-top: 1px solid rgb(54, 54, 54);
+     padding: 20px;
+}
+.ghosts {
+    margin: 20px;
+}
+.wifi {
+    margin: 20px;
 }
 
 .goBack {
     color: rgb(190, 5, 5);
+}
+
+
+/* --- FORMULÄR --- */
+input[type="checkbox"]:checked {
+    accent-color: rgb(167, 3, 3);
+}
+
+.booking-title {
+    color: rgb(154, 4, 4);
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+
+#bookBtn {
+    background-color: rgba(92, 2, 2, 0.816);
+    border: 1px solid rgb(163, 11, 11);
+    color: white;
+    padding: 10px;
+    width: 200px;
+    border-radius: 5px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+#bookForm {
+    display: flex;
+    flex-direction: column;
+     width: 48%;
+    margin: auto;
+    border: 1px solid rgb(44, 44, 44);
+    background-color: rgb(26, 26, 26);
+    justify-content: center;
+    padding: 20px;
+    gap: 20px;
+}
+#checkboxes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+#code {
+    width: 100px;
+    padding: 3px;
+}
+#total-price {
+    font-size: 20px;
+    font-weight: bold;
+     background-color: rgba(118, 3, 3, 0.337);
+    border: 1px solid rgba(116, 4, 4, 0.59);
+    padding: 20px;
+}
+#dates {
+    display: flex;
+    gap: 4em;
+}
+#dateCol {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+#nightsCol {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.confirmation-div {
+     display: flex;
+    flex-direction: column;
+     width: 90%;
+    margin: auto;
+    border: 2px solid rgb(40, 98, 35);
+    background-color: rgba(81, 148, 90, 0.197);
+    justify-content: center;
+    padding: 10px;
+    gap: 10px;
+     border-radius: 5px;
+}
+.confirmation {
+    color: rgb(49, 187, 88);
+    font-size: 23px;
+    font-weight: bold;
+    margin: 5px;
+}
+.confirmation-house {
+    color: rgb(219, 216, 216);
+    font-size: 15px;
+     margin: 0;
+     font-weight: bold;
+     margin-bottom: 10px;
+}
+.confirmation-date,
+.confirmation-nights,
+.confirmation-code,
+.confirmation-options,
+.confirmation-total {
+    margin: 5px;
+}
+
+.confirmation-total {
+    font-size: 19px;
+    font-weight: bold;
 }

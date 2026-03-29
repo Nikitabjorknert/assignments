@@ -15,7 +15,7 @@ h3.classList.add('underrubrik');
 
 const goBack = document.createElement('a');
 goBack.textContent = "← Tillbaka till översikt";
-goBack.href = "../index.html";
+goBack.href = "./index.html";
 goBack.classList.add('goBack');
 header.append(h1, h3, goBack);
 
@@ -75,15 +75,15 @@ function viewHouse(house) {
     <img class="bilder" src="./images/${house.image}" alt="${house.name}">
     <h2 class="housename">${house.name.toUpperCase()}</h2>
     <h4 class="place">${house.location.toUpperCase()}</h4>
-    <p>${house.description}</p>
+    <p class="description">${house.description}</p>
     <div class="inline-items">
         <p class="price">${house.pricePerNight} KR/NATT</p>
         <p class="scareLevel ${scareStyle}">${pEl.toUpperCase()}</p>
     </div>
     <p>Latitud: ${house.coordinates.lat}</p>
     <p>Longitud: ${house.coordinates.lng}</p>
-    <p>Spöken: ${house.ghostTypes.join(", ")}</p>
-    <p>${house.hasWifi ? "WiFi ingår" : "Inget WiFi"}</p>
+    <p class="ghosts">Spöken: ${house.ghostTypes.join(", ")}</p>
+    <p class="wifi">${house.hasWifi ? "WiFi ingår" : "Inget WiFi"}</p>
     `;
 }
 

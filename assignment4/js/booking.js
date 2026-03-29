@@ -4,6 +4,11 @@ export class Booking {
             this.bookForm = document.getElementById(bookForm);
             this.house = house;
            
+            const h2 = document.getElementById('bookHouse');
+            h2.textContent = `BOKA ${house.name.toUpperCase()}`;
+            h2.classList.add('booking-title');
+            this.bookForm.prepend(h2);
+
             this.date = this.bookForm.querySelector('#date');
             this.nights = this.bookForm.querySelector('#nights');
             this.code = this.bookForm.querySelector('#code');
@@ -12,6 +17,7 @@ export class Booking {
             this.tour = this.bookForm.querySelector('#tour');
             this.total = this.bookForm.querySelector('#total-price');
             this.bookBtn = this.bookForm.querySelector('#bookBtn');
+           
 
             this.init();
         }
@@ -75,17 +81,22 @@ export class Booking {
         h3.classList.add('confirmation');
 
         const houseP = document.createElement('p');
-        houseP.textContent = `${this.house.name}`;
+        houseP.textContent = `${this.house.name.toUpperCase()}`;
+        houseP.classList.add('confirmation-house');
 
         const dateP = document.createElement('p');
-        dateP.textContent = "Incheckning: " + summary.dateValue;
+        dateP.textContent = "Incheckningsdatum: " + summary.dateValue;
+        dateP.classList.add('confirmation-date');
 
         const nightsP = document.createElement('p');
         nightsP.textContent = "Antal nätter: " + summary.nightsValue;
+        nightsP.classList.add('confirmation-nights');
 
         const codeP = document.createElement('p');
-        codeP.textContent = "Kampanjkod: " + summary.codeValue;
-
+        const codeText = summary.codeValue ? "Kampanjkod: " + summary.codeValue : "";
+        codeP.textContent = codeText;
+        codeP.classList.add('confirmation-code');
+        
         
         let checkedOptions = "Tillägg: ";
         const options = [];
@@ -108,12 +119,14 @@ export class Booking {
        
         const optionsP = document.createElement('p');
         optionsP.textContent = checkedOptions;
+        optionsP.classList.add('confirmation-options');
 
         const totalP = document.createElement('p');
         totalP.textContent = "Totalt pris: " + total + " kr";
-        
-        confDiv.append(h3, houseP, dateP, nightsP, codeP, optionsP, totalP);
+        totalP.classList.add('confirmation-total');
+
+        confDiv.append(h3, houseP, dateP, nightsP, optionsP, codeP, totalP);
       
-        document.body.appendChild(confDiv);
+       this.bookForm.appendChild(confDiv);
     }
 }

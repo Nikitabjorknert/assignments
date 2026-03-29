@@ -14,18 +14,33 @@
     <div id="error"></div>
    
     <form id="bookForm">
+        <h2 id="bookHouse"></h2>
+        <div id="dates">
+            <div id="dateCol">
         <label for="date">Incheckningsdatum:</label>
         <input type="date" id="date" min="2026-03-30" required>
-
+            </div>
+        <div id="nightsCol">
         <label for="nights">Antal nätter:</label>
         <input type="number" id="nights" min="1" max="14" required>
+        </div>
+        </div>
 
-        <input type="checkbox" id="breakfast">
+        <fieldset id="checkboxes">
+            <legend>Tillägg:</legend>
+            <div>
+                <input type="checkbox" id="breakfast">
         <label for="breakfast">Frukost 100 kr</label>
+            </div>
+            <div>
          <input type="checkbox" id="seans">
         <label for="seans">Nattlig seans 200 kr</label>
+            </div>
+             <div>
          <input type="checkbox" id="tour">
         <label for="tour">Spöktur 200 kr</label>
+        </div>
+        </fieldset>
 
         <label for="code">Kampanjkod:</label>
         <input type="text" id="code" placeholder="T.ex. GHOST20">
