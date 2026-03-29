@@ -80,11 +80,22 @@ function viewHouse(house) {
         <p class="price">${house.pricePerNight} KR/NATT</p>
         <p class="scareLevel ${scareStyle}">${pEl.toUpperCase()}</p>
     </div>
-    <p>Latitud: ${house.coordinates.lat}</p>
-    <p>Longitud: ${house.coordinates.lng}</p>
     <p class="ghosts">Spöken: ${house.ghostTypes.join(", ")}</p>
     <p class="wifi">${house.hasWifi ? "WiFi ingår" : "Inget WiFi"}</p>
     `;
+}
+
+function showMap(house) {
+const map = L.map('map').setView([house.coordinates.lat, house.coordinates.lng], 13);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+L.marker([house.coordinates.lat, house.coordinates.lng])
+.addTo(map)
+.bindPopup(`${house.name}`)
+.openPopup();
 }
 
 async function init() {
@@ -94,6 +105,7 @@ async function init() {
 
 
         viewHouse(house);
+        showMap(house);
         new Booking("bookForm", house);
 
     } catch (error) {

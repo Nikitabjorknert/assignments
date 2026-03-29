@@ -63,4 +63,11 @@ input,
 select {
     margin-right: 15px;
 }
+input[type="checkbox"]:checked {
+    accent-color: rgb(167, 3, 3);
+}
+
+input[type="range"]:focus {
+    accent-color: rgb(167, 3, 3);
+}
 

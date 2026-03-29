@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,39 +8,47 @@
     <link rel="stylesheet" href="./style.css">
     <script type="module" src="./js/house.js"></script>
     <link rel="stylesheet" href="./house.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
+
 <body>
-     <header id="rubrik"></header>
+    <header id="rubrik"></header>
     <div id="house"></div>
     <div id="error"></div>
-   
+
+    <div id="map"></div>
+
+
     <form id="bookForm">
         <h2 id="bookHouse"></h2>
         <div id="dates">
             <div id="dateCol">
-        <label for="date">Incheckningsdatum:</label>
-        <input type="date" id="date" min="2026-03-30" required>
+                <label for="date">*Incheckningsdatum:</label>
+                <input type="date" id="date" min="2026-03-30" required>
+                <p id="date-status"></p>
             </div>
-        <div id="nightsCol">
-        <label for="nights">Antal nätter:</label>
-        <input type="number" id="nights" min="1" max="14" required>
-        </div>
+            <div id="nightsCol">
+                <label for="nights">*Antal nätter:</label>
+                <input type="number" id="nights" min="1" max="14" required>
+                <p id="nights-status"></p>
+            </div>
         </div>
 
         <fieldset id="checkboxes">
             <legend>Tillägg:</legend>
             <div>
                 <input type="checkbox" id="breakfast">
-        <label for="breakfast">Frukost 100 kr</label>
+                <label for="breakfast">Frukost 100 kr</label>
             </div>
             <div>
-         <input type="checkbox" id="seans">
-        <label for="seans">Nattlig seans 200 kr</label>
+                <input type="checkbox" id="seans">
+                <label for="seans">Nattlig seans 200 kr</label>
             </div>
-             <div>
-         <input type="checkbox" id="tour">
-        <label for="tour">Spöktur 200 kr</label>
-        </div>
+            <div>
+                <input type="checkbox" id="tour">
+                <label for="tour">Spöktur 200 kr</label>
+            </div>
         </fieldset>
 
         <label for="code">Kampanjkod:</label>
@@ -49,5 +58,11 @@
         <button type="submit" id="bookBtn">Boka</button>
     </form>
 
+    <footer>
+        <p>Nikita Björknert</p>
+        <p>Spökhusbyrån AB</p>
+        <p>Webbteknik 3 U4</p>
+    </footer>
 </body>
+
 </html>

@@ -33,6 +33,7 @@
 }
 .ghosts {
     margin: 20px;
+    font-style: italic;
 }
 .wifi {
     margin: 20px;
@@ -46,6 +47,9 @@
 /* --- FORMULÄR --- */
 input[type="checkbox"]:checked {
     accent-color: rgb(167, 3, 3);
+}
+input:required {
+    border: 2px solid rgb(208, 4, 4);
 }
 
 .booking-title {
@@ -142,4 +146,19 @@ input[type="checkbox"]:checked {
 .confirmation-total {
     font-size: 19px;
     font-weight: bold;
+}
+
+.confirmation-greeting {
+    color: rgb(49, 187, 88);
+    font-size: 17px;
+    font-style: italic;
+    margin: 5px;
+}
+
+
+#map {
+    height: 300px;
+    width: 600px;
+    margin: auto;
+    margin-bottom: 3em;
 }

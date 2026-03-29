@@ -32,6 +32,7 @@ export class Booking {
                 e.preventDefault();
                 this.bookingConfirmation();
             });
+
         }
 
 
@@ -68,6 +69,27 @@ export class Booking {
     countTotalPrice() {
         this.total.textContent = `Totalpris: ${this.totalPrice()} kr`;
     }
+
+    validate() {
+        const dateStatus = document.getElementById('date-status');
+
+        if (this.date.validity.valueMissing) {
+            dateStatus.textContent = "Vänligen välj ett datum";
+        } else if (this.date.validity.rangeUnderflow) {
+            dateStatus.textContent = "Datumet får inte vara tidigare än dagens datum!";
+        }
+
+        const nightsStatus = document.getElementById('nights-status');
+
+        if (this.nights.validity.valueMissing) {
+            nightsStatus.textContent = "Vänligen ange antal nätter";
+        } else if (this.nights.validity.rangeUnderflow) {
+            nightsStatus.textContent = "Du måste boka minst 1 natt!";
+        } else if (this.nights.validity.rangeOverflow) {
+            nightsStatus.textContent = "Du kan boka max 14 nätter!";
+        }
+    }
+
 
     bookingConfirmation() {
         const summary = this.formData();
@@ -125,7 +147,11 @@ export class Booking {
         totalP.textContent = "Totalt pris: " + total + " kr";
         totalP.classList.add('confirmation-total');
 
-        confDiv.append(h3, houseP, dateP, nightsP, optionsP, codeP, totalP);
+        const greeting = document.createElement('p');
+        greeting.textContent = "Tack för din bokning! Vi ser fram emot ditt besök!";
+        greeting.classList.add('confirmation-greeting');
+
+        confDiv.append(h3, houseP, dateP, nightsP, optionsP, codeP, totalP, greeting);
       
        this.bookForm.appendChild(confDiv);
     }
