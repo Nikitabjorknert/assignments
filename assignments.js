@@ -20,9 +20,9 @@ export const assignments = [
         link: "assignment3/index.html",
     },
     {
-        id: 'Uppgift 4',
-        title: 'Spökbyrån',
-        description: 'Beskrivning',
+        id: 'Uppgift 4 - Slutuppgift',
+        title: 'Spökhusbyrån AB',
+        description: 'Spökhusbyrån är ett företag som hyr ut spökhus. I denna uppgiften byggde jag en webbplats åt företaget där användaren kan se översikt över alla hus, kan filtrera mellan dem, gå in på en detaljsida av huset, se platsen på en karta, fylla i formulär och boka.',
         link: "assignment4/index.html",
     }
 ];
